@@ -1,0 +1,13 @@
+<div id="userInfo">
+	<h1> <%= user.username %> </h1>
+	<form action="../update/<%=user.id%>" method = 'POST'>
+		email <br>
+		<input type="text" name="email" value="<%= user.email %>"><br>
+		password <br>
+		<input type="text" name="password" value="<%= user.password %>"><br>
+		motto <br>
+		<input type="text" name="motto" value="<%= user.motto %>"><br>
+		<input type="submit" value="Save">
+	</form>
+</div>
+asdf

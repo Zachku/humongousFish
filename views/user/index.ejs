@@ -1,0 +1,35 @@
+<h1> Users </h1>
+<table>
+	<tr>
+		<th> username </th>
+		<th> password</th>
+		<th> email</th>
+		<th> motto </th>
+	</tr>
+    <% for(var i=0; i<users.length; i++) { %>
+        <tr>
+           <td> 
+           	<a href='view/<%= users[i].id %>'> <%= users[i].username %> </a>
+           </td>
+           <td> 
+           	<%= users[i].password %>
+           </td>
+           <td> 
+           	<%= users[i].email %>
+           </td>
+           <td> 
+           	<%= users[i].motto %>
+           </td>
+           <td> 
+           	<form action="/user/delete" method='post'>
+           		<input type="submit" value='delete'>
+           		<input type='hidden', name='id' value=<%= users[i].id %>>
+           	</form>
+           </td>
+        </tr>
+    <% } %>
+</table>
+
+<script type="text/javascript">
+document.write(document.domain);
+</script>

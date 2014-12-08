@@ -1,0 +1,20 @@
+<form action="/user/create" method = "post" name="registerForm">
+	<fieldset>
+		<legend>Personal information:</legend>
+		<input type="text" name="username" placeholder="username">
+		<br>
+		<input type="text" name="password" placeholder="password">
+		<br>
+		<input type="text" name="email" placeholder="email">
+		<br>
+		<input type="text" name="motto" placeholder="motto">
+		<br>
+		<input type="text" name="avatarImageUrl" placeholder="Image url">
+		<br><br>
+		<input type="submit" value="Submit">
+	</fieldset>
+</form>
+
+<script type="text/javascript">
+	document.forms['registerForm'].elements['username'].focus();
+</script>
