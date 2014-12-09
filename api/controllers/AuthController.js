@@ -31,6 +31,7 @@ var AuthController = {
    * @param {Object} res
    */
   login: function (req, res) {
+    console.log(req.session);
     var strategies = sails.config.passport
       , providers  = {};
 

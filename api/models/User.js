@@ -8,21 +8,23 @@
 module.exports = {
 
   attributes: {
-	username: {
-		type:  'STRING',
-		unique: true,
-		required: true	
-	},
-	password: 'STRING',
-	email: {
-		type: 'STRING', 
-		unique: true,
-		required: true
-	},
-	motto: 'STRING',
-	avatarImageUrl: 'STRING',
-	
-	catches:{
+  	username: {
+  		type:  'STRING',
+  		unique: true,
+  		required: true	
+  	},
+  	password: 'STRING',
+
+  	email: {
+  		type: 'STRING', 
+  		unique: true,
+  		required: true
+  	},
+  	motto: 'STRING',
+
+  	avatarImageUrl: 'STRING',
+  	
+  	catches:{
         collection: 'catch',
         via: 'owner'
     }

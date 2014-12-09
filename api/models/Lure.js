@@ -15,7 +15,15 @@ module.exports = {
   		collection: 'catch',
   		via:'lures',
   		dominant: true
-  	}
+  	},
+    userId:'string'
+  },
+
+  isOwner: function(userId){
+    if(userId == this.userId){
+      return true;
+    }
+    return false;
   }
 };
 

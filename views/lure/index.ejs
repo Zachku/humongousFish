@@ -1,0 +1,23 @@
+<table>
+	<tr>
+		<th> Model </th>
+		<th> Brand </th>
+    <th> Actions </th>
+	</tr>
+    <% for(var i=0; i<lures.length; i++) { %>
+        <tr>
+           <td> 
+           	<a href='view/<%= lures[i].id %>'> <%= lures[i].model %> </a>
+           </td>
+           <td> 
+           	<%= lures[i].brand %>
+           </td>
+           <td> 
+           	<form action="/lure/delete" method='post'>
+           		<input type="submit" value='delete'>
+           		<input type='hidden', name='id' value=<%= lures[i].id %>>
+           	</form>
+           </td>
+        </tr>
+    <% } %>
+</table>

@@ -96,7 +96,7 @@ module.exports = {
 		})
 	},
 	logout: function (req, res, next){
-		session.destroy();
+		req.session.destroy();
 
 		return res.redirect('auth/login');
 	}

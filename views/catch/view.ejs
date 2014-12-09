@@ -1,0 +1,11 @@
+<script src="/js/maps/oneCatch.js"></script>
+<div id="userInfo">
+	<h1> <%= catch1.id %> </h1>
+	<form action="/catch/update/<%=catch1.id%>" method = 'POST'>
+		weight <br>
+		<input type="text" name="weight" value="<%= catch1.weight %>"><br>
+		date <br>
+		<input type="text" name="date" value="<%= catch1.date %>"><br>
+		<input type="submit" value="Save">
+	</form>
+</div>

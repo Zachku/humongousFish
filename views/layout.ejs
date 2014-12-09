@@ -38,10 +38,17 @@
             <ul>
               <li><a href="/user/register">Register </a></li>
               <li><a href="/user/">Registered </a></li>
+              <% if(req.session.User) {%>
+                <li><a href="/user/logout">Log Out </a></li>
+                <li> Logged in as <font color="green">  <%- req.session.User.username %> </font> </li>
+              <% } else {%>              
+                <li><a href="/auth/login">Log In </a></li>
+              <% } %>
             </ul>
           </div>
 
           <content>
+            
             <%- body %>
           </content>
 
@@ -102,6 +109,7 @@
 
         <!--SCRIPTS-->
         <script src="/js/dependencies/sails.io.js"></script>
+        <script src="/js/maps/oneCatch.js"></script>
         <!--SCRIPTS END-->
       </body>
       </html>

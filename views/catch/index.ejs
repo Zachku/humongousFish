@@ -1,0 +1,24 @@
+<table>
+	<tr>
+		<th> weight </th>
+		<th> id </th>
+    <th> actions </th>
+	</tr>
+  <%= catches[0].weight %>
+    <% for(var i=0; i<catches.length; i++) { %>
+        <tr>
+           <td> 
+           	<a href='view/<%= catches[i].id %>'> <%= catches[i].weight %> </a>
+           </td>
+           <td> 
+           	<%= catches[i].id %>
+           </td>
+           <td> 
+           	<form action="/catch/delete" method='post'>
+           		<input type="submit" value='delete'>
+           		<input type='hidden', name='id' value=<%= catches[i].id %>>
+           	</form>
+           </td>
+        </tr>
+    <% } %>
+</table>
