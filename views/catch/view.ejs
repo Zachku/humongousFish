@@ -1,11 +1,73 @@
 <script src="/js/maps/oneCatch.js"></script>
-<div id="userInfo">
+<%- req.flash('message') %>
+<div id="CatchForm">
 	<h1> <%= catch1.id %> </h1>
 	<form action="/catch/update/<%=catch1.id%>" method = 'POST'>
 		weight <br>
 		<input type="text" name="weight" value="<%= catch1.weight %>"><br>
-		date <br>
-		<input type="text" name="date" value="<%= catch1.date %>"><br>
-		<input type="submit" value="Save">
+		date 
+		( <%= catch1.date %> ) <br>
+		<input type="date" name="date" id="date" value="<%= catch1.date %>"><br>
+		Latitude <br>
+		<input type="text" name="coordLatitude" id="coordLatitude" value="<%= catch1.coordLatitude %>"><br>
+		Longitude <br>
+		<input type="text" name="coordLongitude" id="coordLongitude" value="<%= catch1.coordLongitude %>"><br>
+		Owner <br>
+		<%= catch1.owner %> <br>
+		<input type="submit" value="Save" id="submitCatch">
 	</form>
 </div>
+<div id = "lureForm">
+</div>
+
+<div id = "lakeForm">
+</div>
+
+<div id="fishForm">
+	<select>
+	  <option value="volvo">Volvo</option>
+	  <option value="saab">Saab</option>
+	  <option value="mercedes">Mercedes</option>
+	  <option value="audi">Audi</option>
+	</select>
+</div>
+
+<div id ="mapForm">
+	<% if(catch1.coordLongitude && catch1.coordLatitude) { %>
+		<div id="mapCanvas" style="width:500px;height:500px;"></div>
+	<% } %>
+</div>
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript">
+    var loadMap = function() 
+    {
+        var myOptions = {
+          center: { lat: <%- catch1.coordLatitude %>, lng: <%- catch1.coordLongitude %>},
+          zoom: 5,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("mapCanvas"),
+            myOptions);
+        var myLatLng = new google.maps.LatLng(
+        	<%- catch1.coordLatitude %>,
+          	<%- catch1.coordLongitude %>);
+        var marker = new google.maps.Marker({
+	    	position: myLatLng,
+	    	map: map,
+	    	draggable:true,
+	    	title:"Catch"
+		});
+
+		google.maps.event.addListener(marker, 'dragend', function() 
+		{
+		    var latitudeField = document.getElementById("coordLatitude");
+			latitudeField.value = marker.getPosition().lat();
+			var longitudeField = document.getElementById("coordLongitude");
+			longitudeField.value = marker.getPosition().lng();
+			document.getElementById("submitCatch").click();
+		});
+    };
+    window.onload= loadMap;
+</script>
+

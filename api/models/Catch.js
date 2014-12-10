@@ -40,7 +40,6 @@ module.exports = {
     coordLongitude: {
     	type: 'FLOAT'
     }
-
   }
 };
 

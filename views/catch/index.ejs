@@ -2,9 +2,9 @@
 	<tr>
 		<th> weight </th>
 		<th> id </th>
+    <th> User id </th>
     <th> actions </th>
 	</tr>
-  <%= catches[0].weight %>
     <% for(var i=0; i<catches.length; i++) { %>
         <tr>
            <td> 
@@ -12,6 +12,9 @@
            </td>
            <td> 
            	<%= catches[i].id %>
+           </td>
+           <td> 
+            <%= catches[i].owner %>
            </td>
            <td> 
            	<form action="/catch/delete" method='post'>
