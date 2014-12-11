@@ -39,7 +39,9 @@ module.exports.routes = {
     view: 'user/register'
   },
   'get catch/create': {view: 'catch/create'},
-  'post catch/create': 'CatchController/processCreate'
+  'post catch/create': 'CatchController/processCreate',
+  'get /user/login': {view: 'user/login'},
+  'post /user/login': 'UserController.processLogin'
 
   /***************************************************************************
   *                                                                          *

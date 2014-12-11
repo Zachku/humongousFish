@@ -14,22 +14,42 @@
 		<input type="text" name="coordLongitude" id="coordLongitude" value="<%= catch1.coordLongitude %>"><br>
 		Owner <br>
 		<%= catch1.owner %> <br>
+		Lure <br>
+		<%= catch1.lureId %> <br>
+		<select name="lureId">
+		<option value="">--Not selected--</option>
+		<% for(var i = 0; i < lures.length; i++) { %>
+			<option value="<%- lures[i].id %>" <% if(catch1.lureId==lures[i].id){%> selected="selected"<% } %>>
+				<%- lures[i].brand %> <%- lures[i].model %>
+			</option>
+		<% } %>
+	</select> <a href="/lure/create">Add more lures </a> <br>
 		<input type="submit" value="Save" id="submitCatch">
 	</form>
 </div>
+
+<!--
 <div id = "lureForm">
+	<form action="/catch/addLure">
+		<input type="hidden" name="id" value="<%- catch1.id%>">
+		<select name="lureId">
+			<option value="undefined" color="yellow">--Not selected--</option>
+			<% for(var i = 0; i < lures.length; i++) { %>
+				<option value="<%- lures[i].id %>" <% if(catch1.lures==lures[i].id){%> selected="selected"<% } %>>
+					<%- lures[i].brand %> <%- lures[i].model %>
+				</option>
+			<% } %>
+		</select>
+		<input type="submit" value="Save" id="submitCatch">
+		<a href="/lure/create">Add more lures </a>
+	</form>
 </div>
+-->
 
 <div id = "lakeForm">
 </div>
 
 <div id="fishForm">
-	<select>
-	  <option value="volvo">Volvo</option>
-	  <option value="saab">Saab</option>
-	  <option value="mercedes">Mercedes</option>
-	  <option value="audi">Audi</option>
-	</select>
 </div>
 
 <div id ="mapForm">
@@ -70,4 +90,4 @@
     };
     window.onload= loadMap;
 </script>
-
+<script src="js/maps/c.js"></script>

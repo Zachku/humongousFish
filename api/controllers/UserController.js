@@ -8,6 +8,8 @@ var bcrypt = require('bcryptjs');
 module.exports = {
 	index: function (req, res){
 		User.find().exec(function(err, users){
+			if(!req.session.authenticated) res.redirect('user/login');
+			
 			if(err) return res.send(err);
 			return res.view('user/index', {users: users});
 		});
@@ -55,7 +57,7 @@ module.exports = {
 		return res.view();
 	},
 
-	login: function (req, res, next) {
+	processLogin: function (req, res, next) {
 		if( !req.param('username') || !req.param('password')){
 			var requiredMessage = [{name : 'requiredMessage', message: 'Enter username and password.'}];
 			
@@ -95,6 +97,11 @@ module.exports = {
 			})
 		})
 	},
+
+	login: function (req, res){
+		return res.view();
+	},
+
 	logout: function (req, res, next){
 		req.session.destroy();
 

@@ -57,3 +57,8 @@ process.chdir(__dirname);
   // Start server
   sails.lift(rc('sails'));
 })();
+
+
+// MONGO UP
+// mongod.exe --dbpath C:\Users\Juho\Dropbox\Node\humongousFish\data
+// use humongous fish

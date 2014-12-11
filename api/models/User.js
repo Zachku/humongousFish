@@ -14,16 +14,17 @@ module.exports = {
   		required: true	
   	},
   	password: 'STRING',
-
   	email: {
   		type: 'STRING', 
   		unique: true,
   		required: true
   	},
+    admin: {
+      type: 'BOOLEAN',
+      defaultsTo: false
+    },
   	motto: 'STRING',
-
   	avatarImageUrl: 'STRING',
-  	
   	catches:{
         collection: 'catch',
         via: 'owner'

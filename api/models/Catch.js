@@ -11,6 +11,9 @@ module.exports = {
   	owner: {
   	 	model: 'user'
   	},
+    lureId: {
+        type:'STRING'
+    },
     lures:{
         collection: 'lure',
         via: 'owners'
@@ -39,6 +42,10 @@ module.exports = {
     },
     coordLongitude: {
     	type: 'FLOAT'
+    },
+    // Attribute methods
+    isOwnedByLoggedInUser: function (userId){
+      return this.owner==userId;
     }
   }
 };

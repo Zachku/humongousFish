@@ -1,8 +1,4 @@
-<% if (errors) {%>
-  <% errors.forEach(function (error) { %>
-    <%= __(error) %>
-  <% }) %>
-<% } %>
+<%- req.flash('err') %>
 
 <form role="form" action="/user/login" method="post">
   <input type="text" name="username" placeholder="Username or Email">

@@ -18,7 +18,26 @@
 
 
 module.exports.policies = {
-
+  CatchController: {
+    '*': false, 
+    viewPublic: true,
+    index: 'sessionAuth',
+    create: 'sessionAuth',
+    processCreate: 'sessionAuth',
+    view: ['sessionAuth', 'isMyCatch'],
+    addLure: ['sessionAuth', 'isMyCatch'],
+    update: ['sessionAuth', 'isMyCatch'],
+    delete: ['sessionAuth', 'isMyCatch']
+  },
+  LureController: {
+    '*': false, 
+    index: 'sessionAuth',
+    create: 'sessionAuth',
+    processCreate: 'sessionAuth',
+    view: ['sessionAuth', 'isMyLure'],
+    update: ['sessionAuth', 'isMyLure'],
+    delete: ['sessionAuth', 'isMyLure']
+  }
   /***************************************************************************
   *                                                                          *
   * Default policy for all controllers and actions (`true` allows public     *
