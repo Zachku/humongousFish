@@ -14,7 +14,9 @@
            	<%= lures[i].brand %>
            </td>
            <td> 
-            <a href="<%= lures[i].url %>"><%= lures[i].url.substr(0, 30) %></a>
+            <% if(lures[i].url){ %> 
+              <a href="<%= lures[i].url %>"><%= lures[i].url.substr(0, 30) %> 
+            <%}%> </a>
            </td>
            <td> 
            	<form action="/lure/delete" method='post'>
