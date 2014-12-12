@@ -1,13 +1,35 @@
-<div id="userInfo">
-	<h1> <%= user.username %> </h1>
-	<form action="../update/<%=user.id%>" method = 'POST'>
-		email <br>
-		<input type="text" name="email" value="<%= user.email %>"><br>
-		password <br>
-		<input type="text" name="password" value="<%= user.password %>"><br>
-		motto <br>
-		<input type="text" name="motto" value="<%= user.motto %>"><br>
-		<input type="submit" value="Save">
-	</form>
-</div>
-asdf
+
+<h1>My profile</h1>
+
+<form id="form" class="form" action="/user/update" method="post">
+	
+	<input type="hidden" name="id" value="<%= user.id%> ">
+
+	<div class = "form_row">
+		<label class = "label" >Password</label>
+		<input class="form_input" type="password" name="password" placeholder="Password" value="<%= user.password %>">
+	</div>
+
+	<div class = "form_row">
+		<label class = "label" >Email</label>
+		<input class="form_input" type="text" name="email" placeholder="Email" value="<%= user.email %>">
+	</div>
+
+	<div class = "form_row">
+		<label class = "label" >Motto</label>
+		<input class="form_input" type="text" name="motto" placeholder="Motto" value="<%= user.motto %>">
+	</div>
+
+	<div class = "form_row">
+		<label class = "label" >Avatar Image Url</label>
+		<input class="form_input" type="text" name="avatarImageUrl" placeholder="Avatar Image Url" value="<%= user.avatarImageUrl %>">
+	</div>
+
+	<div class = "form_row">
+		<input class="form_submit" type='submit' value="Save">
+	</div>
+</form>
+
+<script type="text/javascript">
+	document.forms['form'].elements['weight'].focus();
+</script>

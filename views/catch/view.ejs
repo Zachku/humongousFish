@@ -1,50 +1,72 @@
 <script src="/js/maps/oneCatch.js"></script>
 <%- req.flash('message') %>
 <div id="CatchForm">
+
 	<h1> <%= catch1.id %> </h1>
-	<form action="/catch/update/<%=catch1.id%>" method = 'POST'>
-		weight <br>
-		<input type="text" name="weight" value="<%= catch1.weight %>"><br>
-		date 
-		( <%= catch1.date %> ) <br>
-		<input type="date" name="date" id="date" value="<%= catch1.date %>"><br>
-		Latitude <br>
-		<input type="text" name="coordLatitude" id="coordLatitude" value="<%= catch1.coordLatitude %>"><br>
-		Longitude <br>
-		<input type="text" name="coordLongitude" id="coordLongitude" value="<%= catch1.coordLongitude %>"><br>
-		Owner <br>
-		<%= catch1.owner %> <br>
-		Lure <br>
-		<%= catch1.lureId %> <br>
-		<select name="lureId">
-		<option value="">--Not selected--</option>
-		<% for(var i = 0; i < lures.length; i++) { %>
-			<option value="<%- lures[i].id %>" <% if(catch1.lureId==lures[i].id){%> selected="selected"<% } %>>
-				<%- lures[i].brand %> <%- lures[i].model %>
-			</option>
-		<% } %>
-	</select> <a href="/lure/create">Add more lures </a> <br>
-		<input type="submit" value="Save" id="submitCatch">
+
+	<form action="/catch/update/<%=catch1.id%>" class="form" method = 'POST'>
+		<div class = "form_row">
+			<label class = "form_label" >Weight</label>
+			<input class="form_input" type="text" name="weight" value="<%= catch1.weight %>" placeholder="Weight">
+		</div>
+
+
+		<div class = "form_row">
+			<label class = "form_label" >Date</label>
+			<input class="form_input" type="date" value="<%= catch1.date %>" name="date" placeholder="Date" >
+		</div>
+
+		<!-- latitude & longitude -->
+		<input type="hidden" name="coordLatitude" id="coordLatitude" 
+			<% if(catch1.coordLatitude) {%>
+				value="<%= catch1.coordLatitude %>"
+			<%}else {%>
+				placeholder="Coodrdinate latitude"
+		<%}%>> <br>
+
+		<input type="hidden" name="coordLongitude" id="coordLongitude" 
+			<% if(catch1.coordLongitude) {%>
+				value="<%= catch1.coordLongitude %>"
+			<%}else {%>
+				placeholder="Coodrdinate Longitude"
+			<%}%>> <br>
+
+		<!-- end latitude & longitude -->
+
+		<!-- Lure dropdown list -->
+		<div class = "form_row">
+			<label class = "form_label" >Lure (<a href="/lure/create">Add more</a>) <br></label>
+			<select class="form_select" name="lureId">
+				<option value="">--Not selected--</option>
+				<% for(var i = 0; i < lures.length; i++) { %>
+					<option value="<%- lures[i].id %>" <% if(catch1.lureId==lures[i].id){%> selected="selected"<% } %>>
+						<%- lures[i].brand %> <%- lures[i].model %>
+					</option>
+				<% } %>
+			</select> 
+		</div>
+
+		<!-- Fish dropdown list -->
+		<div class = "form_row">
+			<label class = "form_label" >Fish <br></label>
+			<select class="form_select" name="fishId">
+				<option value="">--Not selected--</option>
+				<% for(var i = 0; i < fishes.length; i++) { %>
+					<option value="<%- fishes[i].id %>" <% if(catch1.fishId==fishes[i].id){%> selected="selected"<% } %>>
+						<%- fishes[i].name %>
+					</option>
+				<% } %>
+			</select> 
+		</div>
+
+		<!-- Lake dropdown list -->
+
+		<div class = "form_row">
+			<input class="form_submit" type='submit' value="Save changes">
+		</div>
 	</form>
 </div>
 
-<!--
-<div id = "lureForm">
-	<form action="/catch/addLure">
-		<input type="hidden" name="id" value="<%- catch1.id%>">
-		<select name="lureId">
-			<option value="undefined" color="yellow">--Not selected--</option>
-			<% for(var i = 0; i < lures.length; i++) { %>
-				<option value="<%- lures[i].id %>" <% if(catch1.lures==lures[i].id){%> selected="selected"<% } %>>
-					<%- lures[i].brand %> <%- lures[i].model %>
-				</option>
-			<% } %>
-		</select>
-		<input type="submit" value="Save" id="submitCatch">
-		<a href="/lure/create">Add more lures </a>
-	</form>
-</div>
--->
 
 <div id = "lakeForm">
 </div>
@@ -64,7 +86,7 @@
     {
         var myOptions = {
           center: { lat: <%- catch1.coordLatitude %>, lng: <%- catch1.coordLongitude %>},
-          zoom: 5,
+          zoom: 4,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById("mapCanvas"),

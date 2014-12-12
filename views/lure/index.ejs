@@ -3,7 +3,8 @@
 		<th> Model </th>
 		<th> Brand </th>
     <th> Url </th>
-    <th> Actions </th>
+    <th> Delete </th>
+    <th> Edit </th>
 	</tr>
     <% for(var i=0; i<lures.length; i++) { %>
         <tr>
@@ -20,13 +21,13 @@
            </td>
            <td> 
            	<form action="/lure/delete" method='post'>
-           		<input type="submit" value='delete'>
+           		<input type="submit" class="table_submit" value='delete'>
            		<input type='hidden', name='id' value=<%= lures[i].id %>>
            	</form>
             </td> 
             <td> 
             <form action="/lure/view/<%= lures[i].id %>" method='post'>
-              <input type="submit" value='Edit'>
+              <input type="submit" class="table_submit" value='Edit'>
             </form>
            </td>
         </tr>

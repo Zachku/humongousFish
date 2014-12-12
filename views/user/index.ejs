@@ -5,6 +5,7 @@
 		<th> password</th>
 		<th> email</th>
 		<th> motto </th>
+    <th> Delete </th>
 	</tr>
     <% for(var i=0; i<users.length; i++) { %>
         <tr>
@@ -22,8 +23,8 @@
            </td>
            <td> 
            	<form action="/user/delete" method='post'>
-           		<input type="submit" value='delete'>
-           		<input type='hidden', name='id' value=<%= users[i].id %>>
+           		<input type="submit" class="table_submit" value='delete'>
+           		<input type='hidden'  name='id' value=<%= users[i].id %>>
            	</form>
            </td>
         </tr>

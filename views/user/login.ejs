@@ -1,7 +1,21 @@
+<h1>Log In </h1>
+
 <%- req.flash('err') %>
 
-<form role="form" action="/user/login" method="post">
-  <input type="text" name="username" placeholder="Username or Email">
-  <input type="password" name="password" placeholder="Password">
-  <button type="submit">Sign in</button>
+<form id="form" class="form" action="/user/login" method="post">
+	<div class = "form_row">
+		<label class = "label" >Username</label>
+		<input class="form_input" type="text" name="username" placeholder="Username">
+	</div>
+	<div class = "form_row">
+		<label class = "label" >Password</label>
+		<input class="form_input" type="password" name="password" placeholder="Password" >
+	</div>
+	<div class = "form_row">
+		<input class="form_submit" type='submit' value="Log in">
+	</div>
 </form>
+
+<script type="text/javascript">
+	document.forms['form'].elements['username'].focus();
+</script>

@@ -29,14 +29,14 @@ module.exports = {
 	For other users, there is also a publicView action.
 	*/
 	view: function (req, res, next){
-		Catch.findOne({id: req.param('id')}).exec(function (err, c){
-	        if(!(c.owner == req.session.User.id)) res.forbidden();
-	    });
-
 		Catch.findOne({'id' : req.param('id')}).exec(function (err, catch1){
-			if(err || !catch1) return res.view('404');
+			if(err || !catch1) return res.serverError();
 			Lure.find({'userId': req.session.User.id}).exec(function (err, lures){
-				return res.view('catch/view/', {catch1: catch1, lures: lures});
+				if(err || !lures) return res.serverError();
+				Fish.find().exec(function (err, fishes){
+					if(err || !fishes) return res.serverError();
+					return res.view('catch/view/', {catch1: catch1, lures: lures, fishes: fishes});
+				});
 			});
 		});
 	},
@@ -56,7 +56,8 @@ module.exports = {
 				date : req.param('date'),
 				coordLongitude : req.param('coordLongitude'),
 				coordLatitude : req.param('coordLatitude'),
-				lureId : req.param('lureId')
+				lureId : req.param('lureId'),
+				fishId : req.param('fishId')
 			}).exec(function(err, catch1){
 				if(err) return next(err);
 				req.session.flash = {
@@ -79,6 +80,16 @@ module.exports = {
 
 			return res.redirect('catch/');
 		});
-	}
+	},
+
+	create: function (req, res, next){
+		Fish.find().exec(function (err, fishes){
+			if(err) return res.serverError();
+			Lure.find({'userId': req.session.User.id}).exec(function (err, lures){
+				if(err) return res.serverError();
+				return res.view('catch/create/', {lures: lures, fishes: fishes});
+			});
+		});
+	},
 };
 

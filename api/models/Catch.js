@@ -22,7 +22,9 @@ module.exports = {
         collection: 'fish',
         via: 'owners'
     },
-    
+    fishId: {
+        type:'STRING'
+    },
     lakes:{
         collection: 'lake',
         via: 'owners'
@@ -38,10 +40,12 @@ module.exports = {
     	type: 'STRING'
     },
     coordLatitude: {
-    	type: 'FLOAT'
+    	type: 'FLOAT',
+        defaultsTo: 61.496632653965555
     },
     coordLongitude: {
-    	type: 'FLOAT'
+    	type: 'FLOAT',
+        defaultsTo: 23.763671875
     },
     // Attribute methods
     isOwnedByLoggedInUser: function (userId){

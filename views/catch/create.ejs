@@ -1,7 +1,45 @@
-<form role="form" action="/catch/processCreate" method="post">
-  Weight <br>
-  <input type="text" name="weight" placeholder="Weight" <> <br>
-  Date <br>
-  <input type="text" name="date" placeholder="Date" > <br>
-  <input type='submit' value="Submit">
+<h1>Add new catch</h1>
+
+<form id="form" class="form" action="/catch/processCreate" method="post">
+	<div class = "form_row">
+		<label class = "form_label" >Weight</label>
+		<input class="form_input" type="text" name="weight" placeholder="Weight">
+	</div>
+
+	<div class = "form_row">
+		<label class = "form_label" >Date</label>
+		<input class="form_input" type="text" name="date" placeholder="Date" >
+	</div>
+
+	<!-- Lure dropdown list -->
+	<div class = "form_row">
+		<label class = "form_label" >Lure (<a href="/lure/create">Add more</a>) </label>
+		<select class="form_select" name="lureId">
+			<option value="">--Not selected--</option>
+			<% for(var i = 0; i < lures.length; i++) { %>
+				<option value="<%- lures[i].id %>" >
+					<%- lures[i].brand %> <%- lures[i].model %>
+				</option>
+			<% } %>
+		</select> 
+	</div>
+
+
+	<!-- Fish dropdown list -->
+	<div class = "form_row">
+		<label class = "form_label" >Fish <br></label>
+		<select class="form_select" name="fishId">
+			<option value="">--Not selected--</option>
+			<% for(var i = 0; i < fishes.length; i++) { %>
+				<option value="<%- fishes[i].id %>" >
+					<%- fishes[i].name %>
+				</option>
+			<% } %>
+		</select> 
+	</div>
+
+	<div class = "form_row">
+		<input class="form_submit" type='submit' value="Add">
+	</div>
+
 </form>

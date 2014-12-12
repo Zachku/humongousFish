@@ -1,9 +1,22 @@
-<form role="form" action="/lure/processCreate" method="post">
-  Brand <br>
-  <input type="text" name="brand" placeholder="Brand" > <br>
-  Model <br>
-  <input type="text" name="model" placeholder="Model" <> <br>
-  Url <br>
-  <input type="text" name="url" placeholder="Url" <> <br>
-  <input type='submit' value="Submit">
+<form id="form" class="form" action="/lure/processCreate" method="post">
+	<div class = "form_row">
+		<label class = "label" >Brand</label>
+		<input class="form_input" type="text" name="brand" placeholder="Brand">
+	</div>
+	<div class = "form_row">
+		<label class = "label" >Model</label>
+		<input class="form_input" type="text" name="model" placeholder="Model" >
+	</div>
+	<div class = "form_row">
+		<label class = "label" >Url</label>
+		<input class="form_input" type="text" name="url" placeholder="Url" >
+	</div>
+	<div class = "form_row">
+		<input class="form_submit" type='submit' value="Add">
+	</div>
 </form>
+
+<script type="text/javascript">
+	document.forms['form'].elements['brand'].focus();
+</script>
+

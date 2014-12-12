@@ -25,15 +25,16 @@ module.exports = {
 	},
 
 	update: function (req, res){
-
 		var params = req.allParams();
 		User.update({id : req.param('id')}, 
 			{email : req.param('email'), 
 			motto : req.param('motto'),
-			password : req.param('password')}
+			password : req.param('password'),
+			avatarImageUrl : req.param('avatarImageUrl')}
 			).exec(function(err, user){
-			if(err) return res.view('404');
-			return res.redirect('user/');
+				console.log(req.param('id') + " " + req.param('email'));
+				if(err) return res.view('404');
+				return res.redirect('user/view/'+req.param('id'));
 		});
 	},
 
@@ -65,7 +66,7 @@ module.exports = {
 				err : requiredMessage
 			}
 
-			return res.redirect('auth/login');
+			return res.redirect('user/login');
 		}
 
 		User.findOneByUsername(req.param('username')).exec(function(err, user){
@@ -76,7 +77,7 @@ module.exports = {
 				req.session.flash = {
 					err: noAccountError
 				}
-				return res.redirect('auth/login');
+				return res.redirect('user/login');
 			}
 
 			bcrypt.compare(req.param('password'), user.password, function(err, valid){
@@ -87,7 +88,7 @@ module.exports = {
 					req.session.flash = {
 						err: usernamePasswordMismatch
 					}
-					return res.redirect('auth/login');
+					return res.redirect('user/login');
 				}
 
 				req.session.authenticated = true;
@@ -105,7 +106,7 @@ module.exports = {
 	logout: function (req, res, next){
 		req.session.destroy();
 
-		return res.redirect('auth/login');
+		return res.redirect('user/login');
 	}
 	
 };
