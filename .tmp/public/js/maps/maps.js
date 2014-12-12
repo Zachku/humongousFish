@@ -1,17 +1,10 @@
-<h1> Welcome </h1>
-<div id ="mapForm">
-	<% if(catch1.coordLongitude && catch1.coordLatitude) { %>
-		<div id="mapCanvas" style="width:500px;height:500px;"></div>
-	<% } %>
-</div>
-
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 <script type="text/javascript">
     var loadMap = function() 
     {
         var myOptions = {
           center: { lat: <%- catch1.coordLatitude %>, lng: <%- catch1.coordLongitude %>},
-          zoom: 4,
+          zoom: 5,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById("mapCanvas"),
