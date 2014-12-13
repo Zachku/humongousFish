@@ -76,7 +76,11 @@ module.exports = {
 		params.owner = req.session.User.id;
 		//Create 
 		Catch.create(params, function(err, newCatch){
-			if(err) return next(err);
+			if(err) {
+				req.session.flash = {
+					err: err 
+				};
+				res.redirect('/catch/create');}
 
 			return res.redirect('catch/');
 		});

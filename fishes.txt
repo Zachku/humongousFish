@@ -1,4 +1,4 @@
-mongod.exe --dbpath C:\Users\Juho\Dropbox\Node\humongousFish\data
+﻿mongod.exe --dbpath C:\Users\Juho\Dropbox\Node\data
 use humongousFish
 
 db.fish.insert({name: 'Ahven'})
