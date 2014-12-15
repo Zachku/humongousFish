@@ -60,5 +60,5 @@ process.chdir(__dirname);
 
 
 // MONGO UP
-// mongod.exe --dbpath C:\Users\Juho\Dropbox\Node\humongousFish\data
+// mongod.exe --dbpath C:\Users\Juho\Dropbox\Node\data
 // use humongous fish

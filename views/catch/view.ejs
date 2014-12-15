@@ -112,4 +112,19 @@
     };
     window.onload= loadMap;
 </script>
-<script src="js/maps/c.js"></script>
+
+<input type="button" id="submit" value="Load Data" />
+<div id="stage">
+</div>
+<script type="text/javascript" language="javascript">
+   $(document).ready(function() {
+      $("#submit").click(function(event){
+          $.ajax( {
+             url:'/jquery/result.html',
+             success:function(data) {
+                $('#stage').html(data);
+             }
+          });
+      });
+   });
+   </script>

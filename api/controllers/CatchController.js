@@ -95,5 +95,9 @@ module.exports = {
 			});
 		});
 	},
+
+	ajax: function(req, res, next){
+		return res.send("asdfasdfasdf");
+	}
 };
 
