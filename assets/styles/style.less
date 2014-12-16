@@ -10,10 +10,10 @@ body{
 	font-family:Arial, Helvetica, sans-serif;
 	padding:0;
 	font-size:12px;
-	margin:0 auto;
+	margin: auto;
 	color:#545554;
-	background:url(images/background.png);
-}
+	background-image: url("/images/background.png");
+}	
 .clear{clear:both;}
 p{
 	padding:5px 0 5px 0;
@@ -31,13 +31,22 @@ h3{font-size:20px; color:#343434; padding:0; margin:0px; font-weight:normal;}
 
 #main_container{
 	width:960px;
-	height:auto;
-	padding:0px 0 0px 0; 
+	padding:0 10px 0 10px; 
 	margin:auto;
+	background: white;
+	min-height: 900px;
 }
 
-.header{ width:960px; height:120px;}
+.header{ 
+	width:960px; 
+	height:120px;
+}
 
+.headerImage{
+	width: 960px;
+	height:302px;
+	background-image: url("/images/trees.png");
+}
 .logo{
 	float:left;
 	padding:0px 0 0 35px;
@@ -46,13 +55,22 @@ h3{font-size:20px; color:#343434; padding:0; margin:0px; font-weight:normal;}
 	background:url(images/logo.png) no-repeat left;
 	background-position:0px 22px;
 }
-.logo a{ color:#454546; text-decoration:none; letter-spacing:-3px;}
-.slogan{ float:left; margin:57px 0 0 8px;}
+.logo a{ 
+	color:#454546; 
+	text-decoration:none; 
+	letter-spacing:-3px;}
+
+.slogan{ 
+	float:left; 
+	margin:57px 0 0 8px;
+}
+
 .header_socials{
 	padding:50px 0 0 0;
 	float:right;
 	margin:0;
 }
+
 .header_socials a{
 	float:left; 
 	margin:0 3px 0 3px;
@@ -114,10 +132,29 @@ h3{font-size:20px; color:#343434; padding:0; margin:0px; font-weight:normal;}
 
 
 /*-------------------------------------form-------------------------------------*/
-.form{width:500px;float:left;clear:both;padding:0px 0 40px 20px;}
-.form_row{width:500px;float:left;clear:both;margin:20px 0 0 0;}
-.form_label{width:120px;float:left;padding:5px 20px 0px 0;font-size:14px; color:#00FF40; text-align:right; text-transform:uppercase;}
-.form_input{width:320px;height:35px;float:left;padding:0px 0px 0 10px; background-color:#E7E5DE; border:none; color:#000;}
+.form{
+	width:500px;
+	float:left;
+	clear:both;
+	padding:0px 0 40px 20px;
+}
+.form_row{width:
+	500px;float:left;
+	clear:both;
+	margin:20px 0 0 0;
+}
+.form_label{
+	width:120px;
+	float:left;
+	padding:5px 20px 0px 0;
+	font-size:14px; 
+	color:red; 
+	text-align:right; 
+	text-transform:uppercase;
+}
+.form_input{
+	width:320px;
+	height:35px;float:left;padding:0px 0px 0 10px; background-color:#E7E5DE; border:none; color:#000;}
 .form_select{width:320px;height:35px;float:left;padding:0px 0px 0 10px; background-color:#E7E5DE; border:none; color:#000;}
 .form_textarea{width:320px;height:70px;float:left;padding:10px 0px 30px 10px; background-color:#E7E5DE; border:none; color:#000; font-family:Arial, Helvetica, sans-serif; font-size:12px;}
 input.form_submit{float:right; clear:both; margin:20px 30px 0 0px; width:149px; height:34px; text-align:center; color:#fff; font-size:16px; background: #666666; border:none; font-weight:bold; padding:0 0 0 0px; cursor:pointer;}
@@ -162,3 +199,8 @@ th{
 }
 
 /*-----------------------------------button------------------------------------*/
+
+/*-----------------------------------Map------------------------------------*/
+#mapCanvas{
+	margin:auto;
+}

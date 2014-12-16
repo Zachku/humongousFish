@@ -24,9 +24,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   padding: 0;
   font-size: 12px;
-  margin: 0 auto;
+  margin: auto;
   color: #545554;
-  background: url(images/background.png);
+  background-image: url("/images/background.png");
 }
 .clear {
   clear: both;
@@ -64,13 +64,19 @@ h3 {
 }
 #main_container {
   width: 960px;
-  height: auto;
-  padding: 0px 0 0px 0;
+  padding: 0 10px 0 10px;
   margin: auto;
+  background: white;
+  min-height: 900px;
 }
 .header {
   width: 960px;
   height: 120px;
+}
+.headerImage {
+  width: 960px;
+  height: 302px;
+  background-image: url("/images/trees.png");
 }
 .logo {
   float: left;
@@ -256,7 +262,7 @@ h3 {
   float: left;
   padding: 5px 20px 0px 0;
   font-size: 14px;
-  color: #00FF40;
+  color: red;
   text-align: right;
   text-transform: uppercase;
 }
@@ -345,3 +351,7 @@ th {
   cursor: pointer;
 }
 /*-----------------------------------button------------------------------------*/
+/*-----------------------------------Map------------------------------------*/
+#mapCanvas {
+  margin: auto;
+}

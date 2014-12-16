@@ -1,21 +1,21 @@
 <table>
 	<tr>
-		<th> weight </th>
-		<th> id </th>
-    <th> User id </th>
+    <th> Fish </th>
+		<th> Weight </th>
+    <th> Date </th>
     <th> Delete </th>
     <th> Edit </th>
 	</tr>
     <% for(var i=0; i<catches.length; i++) { %>
         <tr>
+          <td> 
+            <%= catches[i].fishes.id %>
+           </td>
            <td> 
            	<%= catches[i].weight %>
            </td>
            <td> 
-           	<%= catches[i].id %>
-           </td>
-           <td> 
-            <%= catches[i].owner %>
+            <%= catches[i].date %>
            </td>
            <td> 
            	<form action="/catch/delete" method='post'>
