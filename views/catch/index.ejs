@@ -1,35 +1,36 @@
 <table>
 	<tr>
     <th> Fish </th>
-		<th> Weight </th>
+    <th> Weight </th>
     <th> Date </th>
     <th> Delete </th>
     <th> Edit </th>
-	</tr>
-    <% for(var i=0; i<catches.length; i++) { %>
-        <tr>
-          <td> 
-            <%= catches[i].fishes.id %>
-           </td>
-           <td> 
-           	<%= catches[i].weight %>
-           </td>
-           <td> 
-            <%= catches[i].date %>
-           </td>
-           <td> 
-           	<form action="/catch/delete" method='post'>
-           		<input type="submit" class="table_submit" value='delete'>
-           		<input type='hidden', name='id' value=<%= catches[i].id %>>
-           	</form>
-           </td>
-           </td>
-           <td> 
-            <form action="/catch/view/<%= catches[i].id %>" method='post'>
-              <input type="submit" class="table_submit" value='View'>
-            </form>
-           </td>
-        </tr>
-    <% } %>
+  </tr>
+  <% for(var i=0; i<catches.length; i++) { %>
+  <tr>
+    <td> 
+      <%= catches[i].fishes.id %>
+      <%= console.dir(catches[i]) %>
+    </td>
+    <td> 
+      <%= catches[i].weight %>
+    </td>
+    <td> 
+      <%= catches[i].date %>
+    </td>
+    <td> 
+      <form action="/catch/delete" method='post'>
+       <input type="submit" class="table_submit" value='delete'>
+       <input type='hidden', name='id' value=<%= catches[i].id %>>
+     </form>
+   </td>
+ </td>
+ <td> 
+  <form action="/catch/view/<%= catches[i].id %>" method='post'>
+    <input type="submit" class="table_submit" value='View'>
+  </form>
+</td>
+</tr>
+<% } %>
 </table>
 <a href="/catch/create">Add new Catch </a>

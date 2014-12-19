@@ -8,7 +8,7 @@
 module.exports = {
 	index: function(req, res, next){
 		if(!req.session.authenticated) return res.redirect('user/login');
-		Catch.find({owner : req.session.User.id}).exec(function(err, catches){
+		Catch.find({owner : req.session.User.id}).populate('fishes').exec(function(err, catches){
 			return res.view('', {catches: catches});
 		});
 	},
