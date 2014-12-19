@@ -1,7 +1,3 @@
-
-/*TUliko näkyviin=*/
-asdfasdfas
-
 /**
  * Connections
  * (sails.config.connections)

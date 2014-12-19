@@ -6,64 +6,76 @@
   <!-- Viewport mobile tag for sensible mobile support -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-          <!--STYLES-->
-          <link rel="stylesheet" href="/styles/importer.css">
-          <!--STYLES END-->
-          
-          <!--SCRIPTS-->
-          <script src="/js/dependencies/sails.io.js"></script>
-          <script src="/js/GeosansLight_500.font.js"></script>
-          <script src="/js/cufon-yui.js"></script>
-          <script src="/js/jquery-1.3.2.min.js"></script>
-          <script src="/js/jquery-ui.min.js"></script>
-          <!--SCRIPTS END-->
-        </head>
+  <!--STYLES-->
+  <link rel="stylesheet" href="/styles/importer.css">
+  <!--STYLES END-->
 
-        <body>
+  <!--SCRIPTS-->
+  <script src="/js/dependencies/sails.io.js"></script>
+  <script src="/js/GeosansLight_500.font.js"></script>
+  <script src="/js/cufon-yui.js"></script>
+  <script src="/js/jquery-1.3.2.min.js"></script>
+  <script src="/js/jquery-ui.min.js"></script>
+  <!--SCRIPTS END-->
+</head>
 
-          <div id="main_container">
-            <div class="header">
-              <div class="logo"><a href="/homepage">Humongous Fish</a></div>
-              <div class="slogan">| Kalamies on alan mies!</div> 
-              <div class="header_socials">
-                <a href="https://www.facebook.com/juho.siren.7"><img src="/images/facebook.png" alt="" title="" border="0" /></a>
-              </div>
-            </div> 
-            <div class="headerImage"></div>
-            <div class="menu">
-              <ul>
-                <li><a href="/index">Home </a></li>
-                <% if(!req.session.User) {%>
-                  <li><a href="/user/register">Register </a></li>
-                <% } %>
-                <% if(req.session.User) {%>
-                  <li><a href="/user/">Registered users </a></li>
-                  <li><a href="/catch/">Catches </a></li>
-                  <li><a href="/lure/index"> My lures </a></li>
-                  <li><a href="/user/logout">Log Out </a></li>
-                  <li> Logged in as <font color="green">  <%- req.session.User.username %>(<%- req.session.User.id %>) </font> </li>
-                <% } else {%>              
-                  <li><a href="/user/login">Log In </a></li>
-                <% } %>
-              </ul>
-            </div>
+<body>
 
-            <div class="center_content">
-              <%- body %>
-            </div>
 
-            <div class="footer">
-              <div class="copyrights">
-              J. Sirén
-              </div>
-              <div class="footer_right">
-              <a href="/index">Home</a>
-              <a href="http://www.sahajauhoaasi.com">Portfolio</a>
-              </div>
-              <div class="clear"></div>
-            </div>
+<!--
+Header
+-->
+<div class="header">
+  <div class="logo"><a href="/homepage">Humongous Fish</a></div>
+  <div class="slogan">| Kalamies on alan mies!</div> 
+  <div class="header_socials">
+    <a href="https://www.facebook.com/juho.siren.7"><img src="/images/facebook.png" alt="" title="" border="0" /></a>
+  </div>
+</div> 
 
-          </div>
+<!--
+Header image
+-->
+<div class="headerImage"></div>
 
-      </body>
-      </html>
+<div class="main_container">
+  <!--
+  Menu
+  -->
+  <div class="menu">
+    <ul>
+      <li><a href="/index">Home </a></li>
+      <% if(!req.session.User) {%>
+      <li><a href="/user/register">Register </a></li>
+      <% } %>
+      <% if(req.session.User) {%>
+      <li><a href="/user/">Registered users </a></li>
+      <li><a href="/catch/">Catches </a></li>
+      <li><a href="/lure/index"> My lures </a></li>
+      <li><a href="/user/logout">Log Out </a></li>
+      <li> Logged in as <font color="green">  <%- req.session.User.username %>(<%- req.session.User.id %>) </font> </li>
+      <% } else {%>              
+      <li><a href="/user/login">Log In </a></li>
+      <% } %>
+    </ul>
+  </div>
+
+  <div class="center_content">
+    <%- body %>
+  </div>
+
+  <div class="footer">
+    <div class="copyrights">
+      J. Sirén
+    </div>
+    <div class="footer_right">
+      <a href="/index">Home</a>
+      <a href="http://www.sahajauhoaasi.com">Portfolio</a>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+</div>
+
+</body>
+</html>

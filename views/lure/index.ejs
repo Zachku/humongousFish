@@ -1,3 +1,4 @@
+<h1>Lures</h1>
 <table>
 	<tr>
 		<th> Model </th>
@@ -5,32 +6,53 @@
     <th> Url </th>
     <th> Delete </th>
     <th> Edit </th>
-	</tr>
-    <% for(var i=0; i<lures.length; i++) { %>
-        <tr>
-           <td> 
-            <%= lures[i].model %>
-           </td>
-           <td> 
-           	<%= lures[i].brand %>
-           </td>
-           <td> 
-            <% if(lures[i].url){ %> 
-              <a href="<%= lures[i].url %>"><%= lures[i].url.substr(0, 30) %> 
-            <%}%> </a>
-           </td>
-           <td> 
-           	<form action="/lure/delete" method='post'>
-           		<input type="submit" class="table_submit" value='delete'>
-           		<input type='hidden', name='id' value=<%= lures[i].id %>>
-           	</form>
-            </td> 
-            <td> 
-            <form action="/lure/view/<%= lures[i].id %>" method='post'>
-              <input type="submit" class="table_submit" value='Edit'>
-            </form>
-           </td>
-        </tr>
-    <% } %>
+  </tr>
+  <% for(var i=0; i<lures.length; i++) { %>
+  <tr>
+   <td> 
+    <%= lures[i].model %>
+  </td>
+  <td> 
+    <%= lures[i].brand %>
+  </td>
+  <td> 
+    <% if(lures[i].url){ %> 
+    <a href="<%= lures[i].url %>"><%= lures[i].url.substr(0, 30) %> 
+      <%}%> </a>
+    </td>
+    <td> 
+      <form action="/lure/delete" method='post'>
+       <input type="submit" class="table_submit" value='delete'>
+       <input type='hidden', name='id' value=<%= lures[i].id %>>
+     </form>
+   </td> 
+   <td> 
+    <form action="/lure/view/<%= lures[i].id %>" method='post'>
+      <input type="submit" class="table_submit" value='Edit'>
+    </form>
+  </td>
+</tr>
+<% } %>
 </table>
-<a href="/lure/create"> Add new lure </a>
+<h2>Add lure</h2>
+<form id="form" class="form" action="/lure/processCreate" method="post">
+  <div class = "form_row">
+    <label class = "form_label" >Brand</label>
+    <input class="form_input" type="text" name="brand" placeholder="Brand">
+  </div>
+  <div class = "form_row">
+    <label class = "form_label" >Model</label>
+    <input class="form_input" type="text" name="model" placeholder="Model" >
+  </div>
+  <div class = "form_row">
+    <label class = "form_label" >Url</label>
+    <input class="form_input" type="text" name="url" placeholder="Url" >
+  </div>
+  <div class = "form_row">
+    <input class="form_submit" type='submit' value="Add">
+  </div>
+</form>
+
+<script type="text/javascript">
+document.forms['form'].elements['brand'].focus();
+</script>

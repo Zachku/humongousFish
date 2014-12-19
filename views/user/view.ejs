@@ -3,25 +3,25 @@
 
 <form id="form" class="form" action="/user/update" method="post">
 	
-	<input type="hidden" name="id" value="<%= user.id%> ">
+	<input type="hidden" name="id" value="<%= user.id %>">
 
 	<div class = "form_row">
-		<label class = "label" >Password</label>
+		<label class = "form_label" >Password</label>
 		<input class="form_input" type="password" name="password" placeholder="Password" value="<%= user.password %>">
 	</div>
 
 	<div class = "form_row">
-		<label class = "label" >Email</label>
+		<label class = "form_label" >Email</label>
 		<input class="form_input" type="text" name="email" placeholder="Email" value="<%= user.email %>">
 	</div>
 
 	<div class = "form_row">
-		<label class = "label" >Motto</label>
+		<label class = "form_label" >Motto</label>
 		<input class="form_input" type="text" name="motto" placeholder="Motto" value="<%= user.motto %>">
 	</div>
 
 	<div class = "form_row">
-		<label class = "label" >Avatar Image Url</label>
+		<label class = "form_label" >Avatar Image Url</label>
 		<input class="form_input" type="text" name="avatarImageUrl" placeholder="Avatar Image Url" value="<%= user.avatarImageUrl %>">
 	</div>
 

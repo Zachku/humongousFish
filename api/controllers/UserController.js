@@ -8,8 +8,6 @@ var bcrypt = require('bcryptjs');
 module.exports = {
 	index: function (req, res){
 		User.find().exec(function(err, users){
-			if(!req.session.authenticated) res.redirect('user/login');
-			
 			if(err) return res.send(err);
 			return res.view('user/index', {users: users});
 		});
@@ -42,7 +40,7 @@ module.exports = {
 		var params = req.params.all();
 		User.create(params, function(err, user){
 			if(err) return res.send(err);
-			return res.redirect('user/');
+			return res.redirect('user/login');
 		});
 	},
 

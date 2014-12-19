@@ -37,6 +37,17 @@ module.exports.policies = {
     view: ['sessionAuth', 'isMyLure'],
     update: ['sessionAuth', 'isMyLure'],
     delete: ['sessionAuth', 'isMyLure']
+  },
+  UserController: {
+    '*': false, 
+    index: 'sessionAuth',
+    create: true,
+    login: true,
+    logout: true,
+    processLogin: true,
+    view: ['sessionAuth', 'isMyProfile'],
+    update: ['sessionAuth', 'isMyProfile'],
+    delete: ['sessionAuth', 'isMyProfile']
   }
   /***************************************************************************
   *                                                                          *

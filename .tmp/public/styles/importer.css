@@ -27,6 +27,7 @@ body {
   margin: auto;
   color: #545554;
   background-image: url("/images/background.png");
+  max-width: 2300px;
 }
 .clear {
   clear: both;
@@ -45,6 +46,7 @@ h1 {
   font-size: 36px;
   font-weight: bold;
   margin: 0px;
+  margin-left: 20px;
   padding: 10px 0 10px 0px;
   color: #343434;
 }
@@ -62,21 +64,19 @@ h3 {
   margin: 0px;
   font-weight: normal;
 }
-#main_container {
-  width: 960px;
-  padding: 0 10px 0 10px;
-  margin: auto;
-  background: white;
-  min-height: 900px;
-}
 .header {
   width: 960px;
+  padding: 0 10px 0 10px;
   height: 120px;
+  margin: auto;
+  background: white;
 }
 .headerImage {
-  width: 960px;
-  height: 302px;
-  background-image: url("/images/trees.png");
+  margin: auto;
+  width: 1900px;
+  height: 231px;
+  background-image: url("/images/trees4.jpg");
+  background-repeat: no-repeat;
 }
 .logo {
   float: left;
@@ -103,6 +103,16 @@ h3 {
 .header_socials a {
   float: left;
   margin: 0 3px 0 3px;
+}
+.main_container {
+  width: 960px;
+  padding: 10px 10px 0 10px;
+  margin: auto;
+  background: white;
+  min-height: 900px;
+}
+.center_content {
+  padding-top: 100px;
 }
 /*----------------menu tab----------------------*/
 .menu {
@@ -354,4 +364,6 @@ th {
 /*-----------------------------------Map------------------------------------*/
 #mapCanvas {
   margin: auto;
+  width: 90%;
+  height: 200px;
 }
