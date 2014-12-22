@@ -1,5 +1,6 @@
 <script src="/js/confirm.js"></script>
 <h1>Catches</h1>
+<!--
 <table>
 	<tr>
     <th> Fish </th>
@@ -36,7 +37,9 @@
 </tr>
 <% } %>
 </table>
-<input type="submit" class="table_submit" value='delete' id="delete" name="delete">
+
+-->
+
 <a href="/catch/create">Add new Catch </a>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -72,21 +75,28 @@ $(document).ready(function() {
 
   <% for(var i=0; i<catches.length; i++) { %>
     <div class = "catchInIndex"> 
-        <div class = "fish">
-            <%if(catches[i].fish) { %>
-                <h2><%= catches[i].fish.name %></h2>
-            <% } else %> <h2> <%= catches[i].id %></h2> 
+        <div class = "fishInIndex">
+                <a href="/catch/view/<%= catches[i].id %>"> 
+                  <%if(catches[i].fish) { %>
+                    <%= catches[i].fish.name %> 
+                  <% } else { %> 
+                    Unknown fish
+                  <% } %>
+                  <%if(catches[i].weight) { %>
+                    <%= catches[i].weight %> kg
+                  <% } %> 
+                </a>
+            
         </div>
+        <ul>
+          <li><%= catches[i].date %></li>
 
-        <div class = "date">
-            <p><%= catches[i].date %></p>
-        </div>
+          <%if(catches[i].lure) { %>
+            <li>
+              <%= catches[i].lure.brand + " "  + catches[i].lure.model %>
+            </li>
+          <% } %>
 
-        <div class = "lure">
-            <%if(catches[i].lure) { %>
-                <p> <%= catches[i].lure.brand + " "  + catches[i].lure.model %></p>
-            <% } %>
-        </div>
-
+        </ul>
     </div>
 <% } %>
