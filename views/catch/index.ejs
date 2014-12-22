@@ -1,3 +1,5 @@
+<script src="/js/confirm.js"></script>
+<h1>Catches</h1>
 <table>
 	<tr>
     <th> Fish </th>
@@ -9,8 +11,9 @@
   <% for(var i=0; i<catches.length; i++) { %>
   <tr>
     <td> 
-      <%= catches[i].fishes.id %>
-      <%= console.dir(catches[i]) %>
+      <% if(catches[i].fish) { %> 
+        <%= catches[i].fish.name %>
+      <% } %>
     </td>
     <td> 
       <%= catches[i].weight %>
@@ -19,8 +22,8 @@
       <%= catches[i].date %>
     </td>
     <td> 
-      <form action="/catch/delete" method='post'>
-       <input type="submit" class="table_submit" value='delete'>
+      <form action="/catch/delete" method='post' >
+       <input type="submit" class="table_submit" value='delete' id="delete">
        <input type='hidden', name='id' value=<%= catches[i].id %>>
      </form>
    </td>
@@ -33,4 +36,36 @@
 </tr>
 <% } %>
 </table>
+<input type="submit" class="table_submit" value='delete' id="delete" name="delete">
 <a href="/catch/create">Add new Catch </a>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#dialog").dialog({
+        modal: true,
+        bgiframe: true,
+        width: 500,
+        height: 200,
+        autoOpen: false
+    });
+
+
+    $("#delete").click(function(e) {
+
+        e.preventDefault();
+        var theHREF = $(this).attr("href");
+
+        $("dialog").dialog('option', 'buttons', {
+            "Confirm" : function() {
+                window.location.href = theHREF;
+            },
+            "Cancel" : function() {
+                $(this).dialog("close");
+            }
+        });
+
+        $("#dialog").dialog("open");
+
+    });
+
+});
+</script>

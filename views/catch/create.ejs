@@ -10,30 +10,29 @@
 		<label class = "form_label" >Date</label>
 		<input class="form_input" type="text" name="date" placeholder="Date" >
 	</div>
-
+	
 	<!-- Lure dropdown list -->
 	<div class = "form_row">
-		<label class = "form_label" >Lure (<a href="/lure/create">Add more</a>) </label>
+		<label class = "form_label" >Lure (<a href="/lure/create">Add more</a>) <br></label>
 		<select class="form_select" name="lureId">
 			<option value="">--Not selected--</option>
 			<% for(var i = 0; i < lures.length; i++) { %>
-				<option value="<%- lures[i].id %>" >
-					<%- lures[i].brand %> <%- lures[i].model %>
-				</option>
+			<option value="<%- lures[i].id %>">
+				<%- lures[i].brand %> <%- lures[i].model %>
+			</option>
 			<% } %>
 		</select> 
 	</div>
 
-
 	<!-- Fish dropdown list -->
 	<div class = "form_row">
 		<label class = "form_label" >Fish <br></label>
-		<select class="form_select" name="fishes">
+		<select class="form_select" name="fishId">
 			<option value="">--Not selected--</option>
 			<% for(var i = 0; i < fishes.length; i++) { %>
-				<option value="<%- fishes[i].id %>" >
-					<%- fishes[i].name %>
-				</option>
+			<option value="<%- fishes[i].id %>">
+				<%- fishes[i].name %>
+			</option>
 			<% } %>
 		</select> 
 	</div>

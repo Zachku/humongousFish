@@ -10,11 +10,9 @@ module.exports = {
   attributes: {
   	name:'STRING',
   	town:'STRING',
-  	owners: {
-  		collection: 'catch',
-  		via:'lakes',
-  		dominant: true
-  	}
+  	owner:{
+       model:'catch'
+    }
   }
 };
 

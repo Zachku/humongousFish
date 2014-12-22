@@ -11,10 +11,9 @@ module.exports = function(req, res, next) {
   
 	var requestedItemId = req.param('id'); 
 	var userId = req.session.User.id;
-	console.log("LureId: " +requestedItemId + " userId: " + userId);
 	Lure.findOne({id: requestedItemId}).exec(function (err, lure){
 		if(lure.userId == userId) {
 			return next();
-		} return res.forbidden('You are not permitted to perform this action.');
+		} return res.redirect('user/login');;
 	});
 };

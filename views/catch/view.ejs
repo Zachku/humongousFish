@@ -1,5 +1,13 @@
 <script src="/js/maps/oneCatch.js"></script>
-<%- req.flash('message') %>
+
+<% if(req.flash('message') && req.flash('message').length > 0) {%> 
+	<div id="sessionFlash">
+		<%= req.flash('message') %>
+	</div>
+<% } %>
+
+<%= req.flash('message') %>
+<%= req.flash('err') %>
 <div id="CatchForm">
 
 	<h1> <%= catch1.id %> </h1>
@@ -33,13 +41,28 @@
 
 		<!-- end latitude & longitude -->
 
+		<!--  
+		<%if(catch1.lure) { %>
+		 lure <%= catch1.lure.id %>
+		<% } %>
+
+		<%if(catch1.fish) { %>
+		 fisu <%= catch1.fish.id %>
+		<% } %>
+		-->
+		
 		<!-- Lure dropdown list -->
 		<div class = "form_row">
 			<label class = "form_label" >Lure (<a href="/lure/create">Add more</a>) <br></label>
 			<select class="form_select" name="lureId">
 				<option value="">--Not selected--</option>
 				<% for(var i = 0; i < lures.length; i++) { %>
-					<option value="<%- lures[i].id %>" <% if(catch1.lureId==lures[i].id){%> selected="selected"<% } %>>
+					<option value="<%- lures[i].id %>" 
+						<% if(catch1.lure){
+							if(catch1.lure.id==lures[i].id){
+								%> selected="selected"<% 
+							} 
+						}%>>
 						<%- lures[i].brand %> <%- lures[i].model %>
 					</option>
 				<% } %>
@@ -52,7 +75,12 @@
 			<select class="form_select" name="fishId">
 				<option value="">--Not selected--</option>
 				<% for(var i = 0; i < fishes.length; i++) { %>
-					<option value="<%- fishes[i].id %>" <% if(catch1.fishId==fishes[i].id){%> selected="selected"<% } %>>
+					<option value="<%- fishes[i].id %>" 
+						<% if(catch1.fish){
+							if(catch1.fish.id==fishes[i].id){
+								%> selected="selected"<% 
+							} 
+						}%>>
 						<%- fishes[i].name %>
 					</option>
 				<% } %>
@@ -69,9 +97,11 @@
 
 
 <div id = "lakeForm">
+
 </div>
 
 <div id="fishForm">
+	
 </div>
 
 <div id ="mapForm">

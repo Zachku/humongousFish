@@ -11,10 +11,8 @@ module.exports = {
 		name: {
 			type: 'STRING'
 		},
-		owners: {
-            collection: 'catch',
-            via: 'fishes',
-            dominant:true
+        owner:{
+            model:'catch'
         }
 	}
 };

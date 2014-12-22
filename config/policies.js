@@ -26,6 +26,7 @@ module.exports.policies = {
     processCreate: 'sessionAuth',
     view: ['sessionAuth', 'isMyCatch'],
     addLure: ['sessionAuth', 'isMyCatch'],
+    updateFish: ['sessionAuth', 'isMyCatch'],
     update: ['sessionAuth', 'isMyCatch'],
     delete: ['sessionAuth', 'isMyCatch']
   },

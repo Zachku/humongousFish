@@ -11,19 +11,10 @@ module.exports = {
   	brand:'STRING',
   	model:'STRING',
   	url:'STRING',
-  	owners: {
-  		collection: 'catch',
-  		via:'lures',
-  		dominant: true
-  	},
-    userId:'string'
-  },
-
-  isOwner: function(userId){
-    if(userId == this.userId){
-      return true;
+    userId:'STRING',
+  	owner:{
+       model:'catch'
     }
-    return false;
   }
 };
 

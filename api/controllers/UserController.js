@@ -45,6 +45,10 @@ module.exports = {
 	},
 
 	delete: function (req, res){
+		// get method not allowed
+		if(req.method === 'GET') return res.forbidden();
+
+
 		var id = req.param('id');
 		User.destroy({id:id}).exec(function deleteCB(err){
 			if(err) return res.send(err);

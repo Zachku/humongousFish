@@ -11,42 +11,41 @@ module.exports = {
   	owner: {
   	 	model: 'user'
   	},
-    lureId: {
-        type:'STRING'
+
+    lure:{
+        model: 'lure'
     },
-    lures:{
-        collection: 'lure',
-        via: 'owners'
+
+    fish:{
+        model: 'fish'
     },
-    fishes:{
-        collection: 'fish',
-        via: 'owners'
-    },
-    fishId: {
-        type:'STRING'
-    },
-    lakes:{
-        collection: 'lake',
-        via: 'owners'
+
+    lake:{
+        model: 'lake'
     },
 
     weight: {
     	type: 'FLOAT'
     },
+
     date: {
     	type: 'DATE'
     },
+
     imageUrl: {
     	type: 'STRING'
     },
+
     coordLatitude: {
     	type: 'FLOAT',
         defaultsTo: 61.496632653965555
     },
+
     coordLongitude: {
     	type: 'FLOAT',
         defaultsTo: 23.763671875
     },
+
     // Attribute methods
     isOwnedByLoggedInUser: function (userId){
       return this.owner==userId;
