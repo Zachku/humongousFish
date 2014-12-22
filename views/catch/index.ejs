@@ -19,7 +19,7 @@
       <%= catches[i].weight %>
     </td>
     <td> 
-      <%= catches[i].date %>
+      <%= catches[i].formatDate() %>
     </td>
     <td> 
       <form action="/catch/delete" method='post' >
@@ -69,3 +69,24 @@ $(document).ready(function() {
 
 });
 </script>
+
+  <% for(var i=0; i<catches.length; i++) { %>
+    <div class = "catchInIndex"> 
+        <div class = "fish">
+            <%if(catches[i].fish) { %>
+                <h2><%= catches[i].fish.name %></h2>
+            <% } else %> <h2> <%= catches[i].id %></h2> 
+        </div>
+
+        <div class = "date">
+            <p><%= catches[i].date %></p>
+        </div>
+
+        <div class = "lure">
+            <%if(catches[i].lure) { %>
+                <p> <%= catches[i].lure.brand + " "  + catches[i].lure.model %></p>
+            <% } %>
+        </div>
+
+    </div>
+<% } %>

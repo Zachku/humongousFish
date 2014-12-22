@@ -45,7 +45,8 @@ module.exports = {
 					return res.view('catch/view/', {
 						catch1: catch1, 
 						lures: lures, 
-						fishes: fishes
+						fishes: fishes,
+						date: catch1.formatDate()
 					});
 				});
 			});
