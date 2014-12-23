@@ -145,6 +145,18 @@ module.exports = {
 
 	ajax: function(req, res, next){
 		return res.send("asdfasdfasdf");
-	}
+	}, 
+
+	uploadImage: function  (req, res) {
+		req.file('avatar').upload(function (err, files) {
+			if (err)
+				return res.serverError(err);
+
+			return res.json({
+				message: files.length + ' file(s) uploaded successfully!',
+				files: files
+			});
+		});
+  }
 };
 

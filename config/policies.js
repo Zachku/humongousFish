@@ -22,6 +22,7 @@ module.exports.policies = {
     '*': false, 
     viewPublic: true,
     index: 'sessionAuth',
+    uploadImage: true,
     create: 'sessionAuth',
     processCreate: 'sessionAuth',
     view: ['sessionAuth', 'isMyCatch'],
