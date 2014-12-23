@@ -146,7 +146,10 @@
   
 	
 <form action="/catch/uploadImage" enctype="multipart/form-data" method="post">
+	<input type='hidden', name='id' value=<%= catch1.id %>>
     <input type="text" name="title"><br>
     <input type="file" name="avatar" multiple="multiple"><br>
     <input type="submit" value="Upload">
    </form>
+
+   <img src="/images/avatarImages/<%= catch1.imageUrl %>" alt="Mountain View">
