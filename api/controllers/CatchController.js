@@ -12,7 +12,7 @@ module.exports = {
 	index: function(req, res, next){
 		if(!req.session.authenticated) return res.redirect('user/login');
 		Catch.find({owner : req.session.User.id}).populate('fish').populate('lure').exec(function(err, catches){
-			return res.view('', {catches: catches});
+			return res.view('', {catches: catches}); 
 		});
 	},
 

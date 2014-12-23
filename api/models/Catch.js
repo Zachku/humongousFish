@@ -54,7 +54,7 @@ module.exports = {
     formatDate: function (){
         var formattedDate = new Date(this.date);
         var day = (formattedDate.getDate() < 10) ? 0 + "" + formattedDate.getDate() : formattedDate.getDate();
-        return formattedDate.getFullYear() + "-" + (formattedDate.getMonth()+1) + "-" + day;
+        return formattedDate.getFullYear() + "-" + (formattedDate.getMonth()+1) + "-" + day; 
     }
   }
 };
