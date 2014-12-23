@@ -149,22 +149,19 @@ module.exports = {
 
 	uploadImage: function  (req, res) {
 		var catchId = req.param('id');
-		var uploadPath = '../images/avatarImages';
+		var uploadPath = '../public/images/avatarImages';
 
-		req.file('avatar').upload({dirname: uploadPath},function (err, files) {
+		req.file('avatar').upload({dirname: uploadPath, saveAs: catchId + ".png"},function (err, files) {
 			if (err)
 				return res.serverError(err);
 
-			Catch.update({id : catchId}, {imageUrl : files[0].filename})
+			Catch.update({id : catchId}, {imageUrl : catchId + ".png"})
 			.exec(function(err, catch1){
 				if(err) return next(err);
 				req.session.flash = {
 					message: "Success!" 
 				}
-				return res.json({
-					message: files.length + ' file(s) uploaded successfully!',
-					files: files
-				});
+				return res.redirect('catch/view/' + req.param('id'));
 			});
 		});
   }
