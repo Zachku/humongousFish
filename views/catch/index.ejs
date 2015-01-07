@@ -74,30 +74,31 @@ $(document).ready(function() {
 </script> 
 
   <% for(var i=0; i<catches.length; i++) { %>
-    <div class = "catchInIndex"> 
-        <img src="/images/avatarImages/<%= catches[i].imageUrl %>" alt="Mountain View">
-        <div class = "fishInIndex">
-                <a href="/catch/view/<%= catches[i].id %>"> 
-                  <%if(catches[i].fish) { %>
-                    <%= catches[i].fish.name %> 
-                  <% } else { %> 
-                    Unknown fish
-                  <% } %>
-                  <%if(catches[i].weight) { %>
-                    <%= catches[i].weight %> kg
-                  <% } %> 
-                </a>
-            
-        </div>
-        <ul>
-          <li><%= catches[i].date %></li>
 
-          <%if(catches[i].lure) { %>
-            <li>
-              <%= catches[i].lure.brand + " "  + catches[i].lure.model %>
-            </li>
-          <% } %>
+    <a href="/catch/view/<%= catches[i].id %>"> 
+      <div class = "catchInIndex"> 
+          <img src="/images/avatarImages/<%= catches[i].imageUrl %>" alt="Mountain View">
+          <div class = "fishInIndex">
+                    <%if(catches[i].fish) { %>
+                      <%= catches[i].fish.name %> 
+                    <% } else { %> 
+                      Unknown fish
+                    <% } %>
+                    <%if(catches[i].weight) { %>
+                      <%= catches[i].weight %> kg
+                    <% } %> 
+              
+          </div>
+          <ul>
+            <li><%= catches[i].date %></li>
 
-        </ul>
-    </div>
+            <%if(catches[i].lure) { %>
+              <li>
+                <%= catches[i].lure.brand + " "  + catches[i].lure.model %>
+              </li>
+            <% } %>
+
+          </ul>
+      </div>
+    </a>
 <% } %>
