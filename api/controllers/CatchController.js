@@ -38,7 +38,7 @@ module.exports = {
 	For other users, there is also a publicView action.
 	*/
 	view: function (req, res, next){
-		Catch.findOne({'id' : req.param('id')}).populate('fish').populate('lure').exec(function (err, catch1){
+		Catch.findOne({'id' : req.param('id')}).populate('fish').populate('lure').populate('lake').exec(function (err, catch1){
 			if(err || !catch1) return res.serverError();
 			Lure.find({'userId': req.session.User.id}).exec(function (err, lures){
 				if(err || !lures) return res.serverError();
