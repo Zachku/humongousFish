@@ -43,12 +43,15 @@ module.exports = {
 			Lure.find({'userId': req.session.User.id}).exec(function (err, lures){
 				if(err || !lures) return res.serverError();
 				Fish.find().exec(function (err, fishes){
-					if(err || !fishes) return res.serverError();
-					return res.view('catch/view/', {
-						catch1: catch1, 
-						lures: lures, 
-						fishes: fishes,
-						date: catch1.formatDate()
+					Lake.find({'userId': req.session.User.id}).exec(function (err, lakes){
+						if(err || !fishes) return res.serverError();
+						return res.view('catch/view/', {
+							catch1: catch1, 
+							lures: lures, 
+							lakes: lakes, 
+							fishes: fishes,
+							date: catch1.formatDate()
+						});
 					});
 				});
 			});
@@ -74,10 +77,9 @@ module.exports = {
 				coordLongitude : req.param('coordLongitude'),
 				coordLatitude : req.param('coordLatitude'),
 				lure : req.param('lureId'),
+				lake : req.param('lakeId'),
 				fish : req.param('fishId')
 			}).exec(function(err, catch1){
-				console.log("lure " + req.param('lureId'));
-				console.log("fish " + req.param('fishId'));
 				if(err) {
 					req.session.flash = {
 						err: err

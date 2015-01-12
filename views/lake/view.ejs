@@ -1,12 +1,16 @@
 <div id="userInfo">
 	<h1> <%= lake.name %> </h1>
 	<form action="/lake/update/<%=lake.id%>" method = 'POST'>
-		Lake name <br>
-		<input type="text" name="name" value="<%= lake.name %>"><br>
-		Town <br>
-		<input type="text" name="town" value="<%= lake.town %>"><br>
-
-		<input type="submit" value="Save">
+		<div class="form_row">
+			<label class = "form_label" >Lake name</label>
+			<input class = "form_input" type="text" name="name" value="<%= lake.name %>">
+		</div>
+		<div class="form_row">
+			<label class = "form_label" >Town</label>
+			<input class = "form_input" type="text" name="town" value="<%= lake.town %>"><br>
+		</div>
+		<div class="form_row">
+			<input class = "form_submit" type="submit" value="Save">
+		</div>
 	</form>
 </div>
-asdf

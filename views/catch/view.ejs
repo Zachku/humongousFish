@@ -89,6 +89,22 @@
 		</div>
 
 		<!-- Lake dropdown list -->
+		<div class = "form_row">
+			<label class = "form_label" >Lake <br></label>
+			<select class="form_select" name="lakeId">
+				<option value="">--Not selected--</option>
+				<% for(var i = 0; i < lakes.length; i++) { %>
+					<option value="<%- lakes[i].id %>" 
+						<% if(catch1.lake){
+							if(catch1.lake.id==lakes[i].id){
+								%> selected="selected"<% 
+							} 
+						}%>>
+						<%- lakes[i].name %>
+					</option>
+				<% } %>
+			</select> 
+		</div>
 
 		<div class = "form_row">
 			<input class="form_submit" type='submit' value="Save changes">
