@@ -1,0 +1,49 @@
+<h1>Lakes</h1>
+<table>
+	<tr>
+		<th> Lake name </th>
+		<th> Town </th>
+    <th> Delete </th>
+    <th> Edit </th>
+  </tr>
+  <% for(var i=0; i<lakes.length; i++) { %>
+  <tr>
+   <td> 
+    <%= lakes[i].name %>
+  </td>
+  <td> 
+    <%= lakes[i].town %>
+</td>
+<td> 
+  <form action="/lake/delete" method='post'>
+   <input type="submit" class="table_submit" value='delete'>
+   <input type='hidden', name='id' value=<%= lakes[i].id %>>
+ </form>
+</td> 
+<td> 
+<form action="/lake/view/<%= lakes[i].id %>" method='post'>
+  <input type="submit" class="table_submit" value='Edit'>
+</form>
+</td>
+</tr>
+<% } %>
+</table>
+
+<form id="form" class="form" action="/lake/processCreate" method="post">
+  <h2>Add lake</h2>
+  <div class = "form_row">
+    <label class = "form_label" >Lake name</label>
+    <input class="form_input" type="text" name="name" placeholder="Lake name">
+  </div>
+  <div class = "form_row">
+    <label class = "form_label" >Town</label>
+    <input class="form_input" type="text" name="town" placeholder="Town" >
+  </div>
+  <div class = "form_row">
+    <input class="form_submit" type='submit' value="Add">
+  </div>
+</form>
+
+<script type="text/javascript">
+document.forms['form'].elements['name'].focus();
+</script>

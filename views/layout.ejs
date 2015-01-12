@@ -53,8 +53,9 @@ Header image
       <li><a href="/user/">Registered users </a></li>
       <li><a href="/catch/">Catches </a></li>
       <li><a href="/lure/index"> My lures </a></li>
+      <li><a href="/lake/index"> My lakes </a></li>
       <li><a href="/user/logout">Log Out </a></li>
-      <li> Logged in as <font color="green">  <%- req.session.User.username %>(<%- req.session.User.id %>) </font> </li>
+      <li> Logged in as <font color="green">  <%- req.session.User.username %> </font> </li>
       <% } else {%>              
       <li><a href="/user/login">Log In </a></li>
       <% } %>

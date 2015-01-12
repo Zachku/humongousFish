@@ -1,0 +1,12 @@
+<div id="userInfo">
+	<h1> <%= lake.name %> </h1>
+	<form action="/lake/update/<%=lake.id%>" method = 'POST'>
+		Lake name <br>
+		<input type="text" name="name" value="<%= lake.name %>"><br>
+		Town <br>
+		<input type="text" name="town" value="<%= lake.town %>"><br>
+
+		<input type="submit" value="Save">
+	</form>
+</div>
+asdf

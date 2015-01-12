@@ -40,6 +40,15 @@ module.exports.policies = {
     update: ['sessionAuth', 'isMyLure'],
     delete: ['sessionAuth', 'isMyLure']
   },
+  LakeController: {
+    '*': false, 
+    index: 'sessionAuth',
+    create: 'sessionAuth',
+    processCreate: 'sessionAuth',
+    view: ['sessionAuth', 'isMyLake'],
+    update: ['sessionAuth', 'isMyLake'],
+    delete: ['sessionAuth', 'isMyLake']
+  },
   UserController: {
     '*': false, 
     index: 'sessionAuth',

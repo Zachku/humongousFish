@@ -10,6 +10,7 @@ module.exports = {
   attributes: {
   	name:'STRING',
   	town:'STRING',
+  	userId: 'STRING',
   	owner:{
        model:'catch'
     }

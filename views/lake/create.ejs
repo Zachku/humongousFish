@@ -1,0 +1,18 @@
+<form id="form" class="form" action="/lure/processCreate" method="post">
+	<div class = "form_row">
+		<label class = "form_label" >Lake Name</label>
+		<input class="form_input" type="text" name="name" placeholder="Lake name">
+	</div>
+	<div class = "form_row">
+		<label class = "form_label" >Town</label>
+		<input class="form_input" type="text" name="town" placeholder="Town" >
+	</div>
+	<div class = "form_row">
+		<input class="form_submit" type='submit' value="Add">
+	</div>
+</form>
+
+<script type="text/javascript">
+	document.forms['form'].elements['name'].focus();
+</script>
+
