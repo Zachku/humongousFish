@@ -13,12 +13,13 @@
 	<h1> <%= catch1.id %> </h1>
 
 	<form action="/catch/update/<%=catch1.id%>" class="form" method = 'POST'>
+		<!-- Weight -->
 		<div class = "form_row">
 			<label class = "form_label" >Weight</label>
 			<input class="form_input" type="text" name="weight" value="<%= catch1.weight %>" placeholder="Weight">
 		</div>
 
-
+		<!-- Date -->
 		<div class = "form_row">
 			<label class = "form_label" >Date</label>
 			<input class="form_input" type="date" value="<%= date %>" name="date" placeholder="Date" >
@@ -147,9 +148,15 @@
 	
 <form action="/catch/uploadImage" enctype="multipart/form-data" method="post">
 	<input type='hidden', name='id' value=<%= catch1.id %>>
-    <input type="text" name="title"><br>
-    <input type="file" name="avatar" multiple="multiple"><br>
-    <input type="submit" value="Upload">
-   </form>
 
+	<div class="form_row">
+    	<input type="file" name="avatar" multiple="multiple">
+	</div>
+
+	<div class="form_row">
+    	<input type="submit" value="Upload">
+	</div>
+</form>
+<% if(catch1.imageUrl) { %>
    <img src="/images/avatarImages/<%= catch1.imageUrl %>" alt="Mountain View">
+<% } %>
