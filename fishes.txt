@@ -69,7 +69,7 @@ db.fish.insert({name: 'Törö'})
 db.fish.insert({name: 'Vaskikala'})
 db.fish.insert({name: 'Seipi');
 
-db.fish.insert({name: <document>})
+forever start app.js --prod
 
 
 
