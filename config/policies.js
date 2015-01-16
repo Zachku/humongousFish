@@ -59,6 +59,12 @@ module.exports.policies = {
     view: ['sessionAuth', 'isMyProfile'],
     update: ['sessionAuth', 'isMyProfile'],
     delete: ['sessionAuth', 'isMyProfile']
+  },
+  ChatMessageController: {
+    '*': false,
+    index: true,
+    sendMessage: 'sessionAuth',
+    refreshMessages: true
   }
   /***************************************************************************
   *                                                                          *

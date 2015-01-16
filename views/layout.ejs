@@ -6,14 +6,15 @@
   <!-- Viewport mobile tag for sensible mobile support -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <!--STYLES-->
   <link rel="stylesheet" href="/styles/importer.css">
+  <link rel="stylesheet" href="/styles/perfect-scrollbar.min.css">
   <!--STYLES END-->
 
   <!--SCRIPTS-->
   <script src="/js/dependencies/sails.io.js"></script>
   <script src="/js/GeosansLight_500.font.js"></script>
-  <script src="/js/confirm.js"></script>
   <script src="/js/cufon-yui.js"></script>
   <script src="/js/jquery-1.3.2.min.js"></script>
   <script src="/js/jquery-ui.min.js"></script>
@@ -46,6 +47,7 @@ Header image
   <div class="menu">
     <ul>
       <li><a href="/index">Home </a></li>
+      <li><a href="/chatMessage/index"> Chat </a></li>
       <% if(!req.session.User) {%>
       <li><a href="/user/register">Register </a></li>
       <% } %>

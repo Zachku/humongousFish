@@ -1,0 +1,57 @@
+<h1> Chat </h1>
+<div id='chatMessagesAndForm'>
+
+	<!-- div which is updated by ajax call -->
+	<div id = 'chatMessages'>
+		<%- partial ('chatMessages.ejs') %>
+	</div>
+
+	<div id = 'chatForm'>
+		<!-- action="/chatMessage/sendMessage" -->
+		<form id="form" action="/" method="post">
+
+			<label>Message</label>
+			<input type="text" name='message' id='chatMessageInput' <% if(!req.session.User) {%> placeholder="You have to log in to send chat messages." disabled<% } %>>
+			<input class="chat_submit" type='submit' value="Send" <% if(!req.session.User) {%> disabled<% } %>>
+
+		</form>
+	</div>
+</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+<script type="text/javascript">
+	$("#chatMessages").scrollTop($("#chatMessages")[0].scrollHeight);
+	$(document).ready(function(){
+	    setInterval(function(){
+	        $.ajax({
+	            url: '/chatMessage/refreshMessages',
+	            success: function(response) {
+	                $('#chatMessages').html(response);
+	           		$("#chatMessages").scrollTop($("#chatMessages")[0].scrollHeight);
+	            }
+	        });
+	    }, 1000);
+	});	
+	$("#form").submit(function() {
+
+	    var url = "/chatMessage/sendMessage"; // the script where you handle the form input.
+
+	    $.ajax({
+	           type: "POST",
+	           url: url,
+	           data: $("#form").serialize(), // serializes the form's elements.
+	           success: function(response)
+	           {
+	           		$('#chatMessages').html(response);
+	           		$("#chatMessages").scrollTop($("#chatMessages")[0].scrollHeight);
+	           		$('#chatMessageInput').val("");
+	           }
+	         });
+
+	    return false; // avoid to execute the actual submit of the form.
+	});
+</script>

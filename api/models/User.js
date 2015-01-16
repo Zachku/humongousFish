@@ -28,7 +28,12 @@ module.exports = {
   	catches:{
         collection: 'catch',
         via: 'owner'
-    }
+    },
+
+    chatmessages:{
+        collection: 'chatmessage',
+        via: 'owner'
+    },
 
   },
 

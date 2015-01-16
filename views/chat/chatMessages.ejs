@@ -1,0 +1,19 @@
+<div>
+	<% for(var i = 0; i < messages.length; i++){ %>
+		<div id='chatMessage'>
+			
+			<div class = "chatMessageTimestamp"> 
+				<%if(messages[i].timestamp){ %> 
+					<%= messages[i].formatDate() %>
+				<% } %>  
+
+				<%if(messages[i].owner){ %>
+					<%= messages[i].owner.username %>: 
+				<% } %>
+			</div>
+			<div class = "chatMessageMessage"> 
+				<%= messages[i].message %>
+			</div>
+		</div>
+	<% } %>
+</div>

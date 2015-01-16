@@ -388,3 +388,51 @@ th {
   padding-bottom: 10px;
   color: white;
 }
+/*-----------------------------------Chat-----------------------------------------*/
+#chatMessagesAndForm {
+  border-radius: 4px;
+  width: 90%;
+  margin: auto;
+  background: #C0C0C0;
+  padding: 3px;
+}
+#chatMessageInput {
+  width: 95%;
+  margin: 5px auto;
+  padding: 10px;
+}
+#chatForm {
+  border-radius: 4px;
+  width: 95%;
+  height: 80px;
+  margin: auto;
+  padding: 10px;
+  color: black;
+}
+#chatMessage {
+  width: 95%;
+  border-radius: 4px;
+  margin: 3px auto;
+  background: #484848;
+  color: white;
+  padding: 10px 10px;
+}
+#chatMessages {
+  height: 400px;
+  overflow: auto;
+}
+.chatMessageSender {
+  color: #00FF00;
+  font: bold;
+}
+.chatMessageTimestamp {
+  color: #C0C0C0;
+}
+.chat_submit {
+  text-align: center;
+  color: #fff;
+  background: #666666;
+  border: none;
+  padding: 4px 50px 4px 50px;
+  cursor: pointer;
+}
