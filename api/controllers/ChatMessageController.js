@@ -6,6 +6,7 @@
  */
  module.exports = {
  	index: function (req, res){
+		ChatMessage.deleteOld();
 		ChatMessage.find({sort: 'timestamp ASC'}).populate('owner').exec(function(err, messages){
 			if(err) return res.send(err);
 			return res.view('chat/index', {messages: messages});
@@ -24,6 +25,7 @@
 	},
 
 	refreshMessages: function (req, res){
+		ChatMessage.deleteOld();
 		ChatMessage.find({sort: 'timestamp ASC'}).populate('owner').exec(function(err, messages){
 			if(err) return res.serverError();
 			return res.view('chat/chatMessages', {layout:null, messages: messages});

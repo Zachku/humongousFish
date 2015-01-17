@@ -36,5 +36,20 @@ module.exports = {
   	record.timestamp = new Date();
   	next();
   },
+
+  deleteOld: function (next) {
+    var comparableDate = new Date();
+    comparableDate.setMinutes(comparableDate.getMinutes() - 10);
+    ChatMessage.find().exec(function(err, msgs){
+      if(msgs.length > 0){
+        for(var i = 0; i < msgs.length; i++){
+            var timestamp = new Date(msgs[i].timestamp);
+            if(timestamp < comparableDate){
+              ChatMessage.destroy({id:msgs[i].id}).exec(function deleteCB(err){}); 
+            }
+        } 
+      }
+    });
+  }
 };
 
