@@ -8,17 +8,15 @@
 	</div>
 
 	<div id = 'chatForm'>
+		<input type="checkbox" checked="true" id="followMessagesCheckbox"> Follow messages
 		<!-- action="/chatMessage/sendMessage" -->
 		<form id="form" action="/" method="post">
-
-			<label>Message</label>
 			<input type="text" name='message' id='chatMessageInput' <% if(!req.session.User) {%> placeholder="You have to log in to send chat messages." disabled<% } %>>
 			<input class="chat_submit" type='submit' value="Send" <% if(!req.session.User) {%> disabled<% } %>>
 
 		</form>
 	</div>
 </div>
-
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -32,7 +30,9 @@
 	            url: '/chatMessage/refreshMessages',
 	            success: function(response) {
 	                $('#chatMessages').html(response);
-	           		$("#chatMessages").scrollTop($("#chatMessages")[0].scrollHeight);
+	                if($('#followMessagesCheckbox').is(':checked')){
+	           			$("#chatMessages").scrollTop($("#chatMessages")[0].scrollHeight);
+	           		}
 	            }
 	        });
 	    }, 100);
