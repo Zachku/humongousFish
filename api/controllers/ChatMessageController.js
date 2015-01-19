@@ -25,7 +25,7 @@
 	},
 
 	refreshMessages: function (req, res){
-		ChatMessage.deleteOld();
+		//ChatMessage.deleteOld();
 		ChatMessage.find({sort: 'timestamp ASC'}).populate('owner').exec(function(err, messages){
 			if(err) return res.serverError();
 			return res.view('chat/chatMessages', {layout:null, messages: messages});
