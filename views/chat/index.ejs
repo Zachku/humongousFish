@@ -45,11 +45,13 @@
 	           type: "POST",
 	           url: url,
 	           data: $("#form").serialize(), // serializes the form's elements.
+	           beforeSend: function(){
+	           		$('#chatMessageInput').val("");
+	           },
 	           success: function(response)
 	           {
 	           		$('#chatMessages').html(response);
 	           		$("#chatMessages").scrollTop($("#chatMessages")[0].scrollHeight);
-	           		$('#chatMessageInput').val("");
 	           }
 	         });
 
