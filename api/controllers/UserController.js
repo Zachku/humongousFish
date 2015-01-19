@@ -62,10 +62,8 @@ module.exports = {
 
 	processLogin: function (req, res, next) {
 		if( !req.param('username') || !req.param('password')){
-			var requiredMessage = [{name : 'requiredMessage', message: 'Enter username and password.'}];
-			
 			req.session.flash = {
-				err : requiredMessage
+				err : 'Enter username and password'
 			}
 
 			return res.redirect('user/login');
@@ -75,9 +73,8 @@ module.exports = {
 			if(err) return next(err);
 
 			if(!user) {
-				var noAccountError = [{name: 'noAccount', message: 'Username ' + req.param('username') + ' not found.'}]
 				req.session.flash = {
-					err: noAccountError
+					err: 'Not found'
 				}
 				return res.redirect('user/login');
 			}
@@ -86,9 +83,8 @@ module.exports = {
 				if(err) return next(err);
 
 				if(!valid){
-					var usernamePasswordMismatch = [{name: 'usernamePasswordMismatch', message: 'Password incorrect.'}]
 					req.session.flash = {
-						err: usernamePasswordMismatch
+						err: 'Password incorrect.'
 					}
 					return res.redirect('user/login');
 				}

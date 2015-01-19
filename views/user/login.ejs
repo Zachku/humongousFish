@@ -3,9 +3,11 @@
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
 <h1>Login </h1>
-
-<%- req.flash('err') %>
-
+<% if (req.session.flash &&req.session.flash.err) {%>
+	<div id = "sessionFlash"> 
+		<%= req.flash('err') %>
+	</div>
+<% } %>
 <form id="form" class="form" action="/user/login" method="post">
 	<div class = "form_row">
 		<label class = "form_label" >Username</label>
