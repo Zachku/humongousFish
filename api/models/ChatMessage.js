@@ -26,7 +26,7 @@ module.exports = {
         var minute = formattedDate.getMinutes();
         var day = (formattedDate.getDate() < 10) ? 0 + "" + formattedDate.getDate() : formattedDate.getDate();
         var month = ((formattedDate.getMonth()+1) < 10) ? 0 + "" + (formattedDate.getMonth()+1) : (formattedDate.getMonth()+1);
-        return formattedDate.getFullYear() + "." + month + "." + day + " " + hour + ":" + minute; 
+        return day + "." + month + "." + formattedDate.getFullYear() + " " + hour + ":" + minute; 
     }
   },
   
