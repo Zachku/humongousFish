@@ -27,7 +27,7 @@ module.exports = {
 		User.update({id : req.param('id')}, 
 			{email : req.param('email'), 
 			motto : req.param('motto'),
-			password : req.param('password'),
+			//password : req.param('password'),
 			avatarImageUrl : req.param('avatarImageUrl')}
 			).exec(function(err, user){
 				console.log(req.param('id') + " " + req.param('email'));
@@ -62,8 +62,9 @@ module.exports = {
 
 	processLogin: function (req, res, next) {
 		if( !req.param('username') || !req.param('password')){
+			
 			req.session.flash = {
-				err : 'Enter username and password'
+				err : 'Enter username and password.'
 			}
 
 			return res.redirect('user/login');
@@ -74,7 +75,7 @@ module.exports = {
 
 			if(!user) {
 				req.session.flash = {
-					err: 'Not found'
+					err: 'User not found'
 				}
 				return res.redirect('user/login');
 			}
@@ -84,7 +85,7 @@ module.exports = {
 
 				if(!valid){
 					req.session.flash = {
-						err: 'Password incorrect.'
+						err: 'Wrong password'
 					}
 					return res.redirect('user/login');
 				}

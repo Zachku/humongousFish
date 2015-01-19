@@ -1,0 +1,18 @@
+<div class = "catchInPublicView"> 
+  <ul>
+    <%if(catch1.imageUrl) { %>
+    <li> <img src="/images/avatarImages/<%= catch1.imageUrl %>" alt="Img"> </li>
+    <% } %>
+    <li> <%= catch1.formatDate() %> </li>
+    <%if(catch1.fish) { %>
+      <li> <%= catch1.fish.name %> </li>
+    <% } else { %> 
+      <li> Unknown fish </li>
+    <% } %>
+    <%if(catch1.weight) { %>
+      <li> <%= catch1.weight %> kg </li>
+    <% } %> 
+    <%if(catch1.lure) { %>
+        <li> <%= catch1.lure.brand + " "  + catch1.lure.model %> </li>
+    <% } %>
+</div>

@@ -22,9 +22,14 @@
 	        	<%- catches[i].coordLatitude %>,
 	          	<%- catches[i].coordLongitude %>);
 	        var marker = new google.maps.Marker({
+	        	clickable: true,
 		    	position: myLatLng,
 		    	map: map,
-		    	title:"Catch"
+		    	title:"Catch",
+		    	url: "/catch/view/<%- catches[i].id %>"
+			});
+			google.maps.event.addListener(marker, 'click', function() {
+			    window.location.href = "/catch/viewPublic/<%- catches[i].id %>";
 			});
 		<% } %>
 

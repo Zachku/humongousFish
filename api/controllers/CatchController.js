@@ -62,7 +62,12 @@ module.exports = {
 	* viewPublic action to users to see other user's catches
 	*/
 	viewPublic: function(req, res, next){
-
+		Catch.findOne({'id' : req.param('id')}).populate('fish').populate('lure').populate('lake').exec(function (err, catch1){
+			if(err || !catch1) return res.serverError();
+			return res.view('catch/viewPublic/', {
+				catch1: catch1
+			});
+		});
 
 	},
 	
