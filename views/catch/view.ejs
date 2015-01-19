@@ -10,7 +10,7 @@
 <%= req.flash('err') %>
 <div id="CatchForm">
 
-	<h1> <% if(catch1.fish) { <%= catch1.fish.name %> <% } %> </h1> 
+	<h1> <% if(catch1.fish) { %> <%= catch1.fish.name %> <% } %> </h1> 
 	<form action="/catch/update/<%=catch1.id%>" class="form" method = 'POST'>
 		<!-- Weight -->
 		<div class = "form_row">
