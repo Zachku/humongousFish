@@ -36,6 +36,11 @@ module.exports = {
     	type: 'STRING'
     },
 
+    isPUblic: {
+        type: 'BOOLEAN',
+        defaultsTo: false
+    },
+
     coordLatitude: {
     	type: 'FLOAT',
         defaultsTo: 61.496632653965555

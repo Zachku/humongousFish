@@ -88,6 +88,7 @@ module.exports = {
 	* Update-function for weight, date and coords
 	*/
 	update: function (req, res, next){
+		console.log(req.param('isPublic'));
 		Catch.update({id : req.param('id')}, 
 			{
 				weight : req.param('weight'), 
@@ -95,15 +96,16 @@ module.exports = {
 				coordLongitude : req.param('coordLongitude'),
 				coordLatitude : req.param('coordLatitude'),
 				lure : req.param('lureId'),
+				isPublic : req.param('isPublic'),
 				lake : req.param('lakeId'),
 				fish : req.param('fishId')
 			}).exec(function(err, catch1){
 				if(err) {
 					req.session.flash = {
-						err: err
-					};
+						err: 'Something went wrong.'
+					}
 				}
-				req.session.flash = {
+				else req.session.flash = {
 					message: "Success!" 
 				}
 				return res.redirect('catch/view/' + req.param('id'));

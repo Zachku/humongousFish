@@ -20,7 +20,7 @@
 module.exports.policies = {
   CatchController: {
     '*': false, 
-    viewPublic: true,
+    viewPublic: ['sessionAuth','isPublic'],
     index: 'sessionAuth',
     uploadImage: true,
     create: 'sessionAuth',

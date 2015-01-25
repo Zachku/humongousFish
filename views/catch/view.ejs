@@ -1,17 +1,26 @@
 <script src="/js/maps/oneCatch.js"></script>
 
-<% if(req.flash('message') && req.flash('message').length > 0) {%> 
-	<div id="sessionFlash">
-		<%= req.flash('message') %>
+<% if (req.session.flash &&req.session.flash.err) {%>
+	<div id = "sessionFlash"> 
+		<%= req.flash('err') %>
 	</div>
 <% } %>
 
-<%= req.flash('message') %>
-<%= req.flash('err') %>
+
 <div id="CatchForm">
 
 	<h1> <% if(catch1.fish) { %> <%= catch1.fish.name %> <% } %> </h1> 
 	<form action="/catch/update/<%=catch1.id%>" class="form" method = 'POST'>
+
+		<!-- IsPublic checkbox -->
+		<div class = "form_row">
+			<label class = "form_label" >Is this catch public to other users?</label>
+			<input type="checkbox" name="isPublic"  value='true'
+			<%if(catch1.isPublic){ %>
+				checked
+			<% } %>
+		</div>
+
 		<!-- Weight -->
 		<div class = "form_row">
 			<label class = "form_label" >Weight</label>
