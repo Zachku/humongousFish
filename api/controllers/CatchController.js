@@ -88,7 +88,6 @@ module.exports = {
 	* Update-function for weight, date and coords
 	*/
 	update: function (req, res, next){
-		console.log(req.param('isPublic'));
 		Catch.update({id : req.param('id')}, 
 			{
 				weight : req.param('weight'), 
@@ -123,7 +122,6 @@ module.exports = {
 			{
 				fish : req.param('fishId')
 			}).exec(function(err, catch1){
-				console.log(req.param('fishId'));
 				if(err) return next(err);
 				req.session.flash = {
 					message: "Success!" 
@@ -142,15 +140,17 @@ module.exports = {
 		params.owner = req.session.User.id;
 		params.lure = req.param('lureId');
 		params.fish = req.param('fishId');
+
 		//Create 
 		Catch.create(params, function(err, newCatch){
 			if(err) {
 				req.session.flash = {
-					err: err 
+					err: 'Something is missing.'
 				};
-				res.redirect('/catch/create');}
+				return res.redirect('/catch/create');
+			}
 
-			return res.redirect('catch/');
+			return res.redirect('catch/view/'+newCatch.id);
 		});
 	},
 

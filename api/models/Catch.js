@@ -29,7 +29,8 @@ module.exports = {
     },
 
     date: {
-    	type: 'DATE'
+    	type: 'DATE',
+        defaultsTo: new Date()
     },
 
     imageUrl: {
