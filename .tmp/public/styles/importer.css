@@ -73,6 +73,7 @@ h3 {
 .headerImage {
   margin: auto;
   width: 1900px;
+  max-width: 100%;
   height: 231px;
   background-image: url("/images/trees4.jpg");
   background-repeat: no-repeat;
@@ -385,6 +386,9 @@ th {
   margin: 10px 0 10px 0;
   padding: 10px 10px 10px 10px;
 }
+.catchImageInIndex {
+  padding: 0 10px;
+}
 .fishInIndex a {
   font-size: 200%;
   padding-bottom: 10px;
@@ -437,4 +441,7 @@ th {
   border: none;
   padding: 4px 50px 4px 50px;
   cursor: pointer;
+}
+#catchImage {
+  margin-top: 100px;
 }

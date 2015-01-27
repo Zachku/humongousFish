@@ -159,19 +159,21 @@
     window.onload= loadMap;
 </script>
 
-  
-	
-<form action="/catch/uploadImage" enctype="multipart/form-data" method="post">
-	<input type='hidden', name='id' value=<%= catch1.id %>>
+<div id='catchImage'>
+	<h1>Add image</h1>
+		
+	<form action="/catch/uploadImage" enctype="multipart/form-data" method="post">
+		<input type='hidden', name='id' value=<%= catch1.id %>>
 
-	<div class="form_row">
-    	<input type="file" name="avatar" multiple="multiple">
-	</div>
+		<div class="form_row">
+	    	<input type="file" name="avatar" multiple="multiple" accept="image/*">
+		</div>
 
-	<div class="form_row">
-    	<input type="submit" value="Upload">
-	</div>
-</form>
-<% if(catch1.imageUrl) { %>
-   <img src="/images/avatarImages/<%= catch1.imageUrl %>" alt="Mountain View">
-<% } %>
+		<div class="form_row">
+	    	<input type="submit" value="Upload">
+		</div>
+	</form>
+	<% if(catch1.imageUrl) { %>
+	   <img src="/images/avatarImages/<%= catch1.imageUrl %>" alt="Mountain View" IMG HEIGHT=250 WIDTH=250>
+	<% } %>
+</div>
