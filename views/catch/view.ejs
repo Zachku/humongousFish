@@ -9,7 +9,7 @@
 
 <div id="CatchForm">
 
-	<h1> <% if(catch1.fish) { %> <%= catch1.fish.name %> <% } %> </h1> 
+	<h1> <% if(catch1.fish) { %> <%= catch1.fish.name %> <% } else { %> Unknown fish <% } %> </h1> 
 	<form action="/catch/update/<%=catch1.id%>" class="form" method = 'POST'>
 
 		<!-- IsPublic checkbox -->
@@ -158,7 +158,7 @@
     };
     window.onload= loadMap;
 </script>
-
+<br>
 <div id='catchImage'>
 	<h1>Add image</h1>
 		
@@ -174,6 +174,6 @@
 		</div>
 	</form>
 	<% if(catch1.imageUrl) { %>
-	   <img src="/images/avatarImages/<%= catch1.imageUrl %>" alt="Mountain View" IMG HEIGHT=250 WIDTH=250>
+	   <img src="/images/avatarImages/<%= catch1.imageUrl %>" alt="Image of the catch" IMG HEIGHT=250 WIDTH=250>
 	<% } %>
 </div>

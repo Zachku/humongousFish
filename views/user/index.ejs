@@ -2,7 +2,6 @@
 <table>
 	<tr>
 		<th> username </th>
-		<th> password</th>
 		<th> email</th>
 		<th> motto </th>
     <th> Delete </th>
@@ -11,9 +10,6 @@
         <tr>
            <td> 
            	<a href='view/<%= users[i].id %>'> <%= users[i].username %> </a>
-           </td>
-           <td> 
-           	<%= users[i].password %>
            </td>
            <td> 
            	<%= users[i].email %>
@@ -30,7 +26,3 @@
         </tr>
     <% } %>
 </table>
-
-<script type="text/javascript">
-document.write(document.domain);
-</script>
