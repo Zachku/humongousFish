@@ -9,7 +9,7 @@ module.exports = {
 	processCreate: function(req, res, next){
 		var params = req.params.all();
 		params.userId = req.session.User.id;
-		Lake.create(params, function(err, lure){
+		Lake.create(params, function(err, lake){
 			if(err) return next(err);
 			return res.redirect('lake/index');
 		});

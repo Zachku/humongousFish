@@ -1,5 +1,48 @@
 <div class = "catchInPublicView"> 
-  <h1><%=catch1.owner.username %> </h1>
+  <h1>
+    User <%=catch1.owner.username%>'s 
+    <% if(catch1.fish) { %>
+      <%=catch1.fish.name%> 
+    <% } else { %> 
+      unknown fish 
+    <% } %> 
+  </h1>
+
+
+  <div id="likes">
+    <div>
+      <h2> 
+        <% if(likes) { %> 
+          <%= likes %> 
+        <% } else { %>
+          0 
+        <% } %> 
+
+        user(s) like this catch. 
+      </h2>
+    </div>
+
+    <form action="/catch/likeCatch" id="form" method="post">
+      <input type="hidden" name="catchId" id="catchId " value="<%=catch1.id%>">
+      <input type="submit" 
+      <%if( !userAllreadyLikedThisCatch ) { %>
+        value="Like"
+        class="likeSubmit"
+      <% } else { %>
+        value="Unlike"
+        class="unlikeSubmit"
+      <% } %>
+      >
+    </form>
+  </div>
+
+
+
+
+
+
+
+
   <ul>
     <%if(catch1.imageUrl) { %>
     <li> <img src="/images/avatarImages/<%= catch1.imageUrl %>" alt="Img"> </li>
@@ -17,3 +60,7 @@
         <li> <%= catch1.lure.brand + " "  + catch1.lure.model %> </li>
     <% } %>
 </div>
+
+
+
+

@@ -49,7 +49,7 @@ module.exports = {
 							return res.view('catch/view/', {
 								catch1: catch1, 
 								lures: lures, 
-								likes: likes,
+								likes: likes.length,
 								lakes: lakes, 
 								fishes: fishes,
 								date: catch1.formatDate()
@@ -67,27 +67,52 @@ module.exports = {
 	viewPublic: function(req, res, next){
 		Catch.findOne({'id' : req.param('id')}).populate('owner').populate('fish').populate('lure').populate('lake').exec(function (err, catch1){
 			Like.find({'owner': req.param('id')}).exec(function (err, likes){
+				var userAllreadyLikedThisCatch = false;
+				for(var i = 0; i < likes.length; i++){
+					if(likes[i].userId === req.session.User.id){
+						userAllreadyLikedThisCatch = true;
+					}
+				}
 				if(err || !catch1) return res.serverError();
 				return res.view('catch/viewPublic/', {
-					likes: likes,
-					catch1: catch1
+					likes: likes.length,
+					catch1: catch1,
+					userAllreadyLikedThisCatch: userAllreadyLikedThisCatch
 				});
 			});
 		});
 
 	},
+
 	/**
-	* Partial viewPublic action to users to see other user's catches
+	 Method to like or unlike specific catch.
+	 If user has already liked this catch, method will remove that like 
+	 returns partial view 'likes'
 	*/
-	viewPublicPartial: function(req, res, next){
-		Catch.findOne({'id' : req.param('id')}).populate('owner').populate('fish').populate('lure').populate('lake').exec(function (err, catch1){
-			if(err || !catch1) return res.serverError();
-			return res.view('catch/viewPublic/', {
-				catch1: catch1,
-				layout: null
-			});
+	likeCatch: function (req, res) {
+  		if(req.method !== 'POST') return res.forbidden();
+  		
+		var params = req.params.all();
+		params.userId = req.session.User.id;
+		params.owner = req.param('catchId');
+
+		
+		Like.find({'owner': req.param('catchId')}).exec(function (err, likes){
+			var userAllreadyLikedThisCatch = false;
+			for(var i = 0; i < likes.length; i++){
+				if(likes[i].userId === req.session.User.id){
+					userAllreadyLikedThisCatch = true;
+				}
+			}
+			//Create new Like if user hasn't liked this yet. 
+			if(!userAllreadyLikedThisCatch){
+				Like.create(params, function(err, newLike){});
+			} else{
+				Like.destroy({'userId': req.session.User.id, 'owner': req.param('catchId')}).exec(function deleteCB(err){});
+			}
+			return res.redirect('catch/viewPublic/' + req.param('catchId'));
 		});
-	},
+  	},
 
 
 	/**
@@ -189,15 +214,6 @@ module.exports = {
 				}
 				return res.redirect('catch/view/' + req.param('id'));
 			});
-		});
-  	},
-
-  	likeCatch: function (req, res) {
-		params.userId = req.session.User.id;
-		params.owner = req.param('catchId');
-
-		Like.create(params, function(err, newLike){
-			return res.redirect('catch/view/'+req.param('catchId'));
 		});
   	}
 };

@@ -9,9 +9,9 @@
 
 <div id="CatchForm">
 
-	<h1> <% if(catch1.fish) { %> <%= catch1.fish.name %> <% } %> </h1> 
-	
-	<h2> <% if(likes) { %> <%=likes.length %> <% } else { %> 0 <% } %> users like this catch.
+	<h1> <% if(catch1.fish) { %> <%= catch1.fish.name %> <% } else { %>Unknown fish <% } %> </h1> 
+	<p><a href="/catch/viewPublic/<%= catch1.id %>">View the public view of this catch</a></p>
+	<h2> <% if(likes) { %> <%=likes %> <% } else { %> 0 <% } %> user(s) like this catch. </h2>
 	<form action="/catch/update/<%=catch1.id%>" class="form" method = 'POST'>
 
 		<!-- IsPublic checkbox -->

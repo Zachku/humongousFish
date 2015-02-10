@@ -25,6 +25,7 @@ module.exports.policies = {
     uploadImage: true,
     create: 'sessionAuth',
     processCreate: 'sessionAuth',
+    likeCatch: 'sessionAuth',
     view: ['sessionAuth', 'isMyCatch'],
     addLure: ['sessionAuth', 'isMyCatch'],
     updateFish: ['sessionAuth', 'isMyCatch'],
