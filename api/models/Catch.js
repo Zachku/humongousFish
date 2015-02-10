@@ -8,6 +8,12 @@
 module.exports = {
 
   attributes: {
+    like: {
+        collection: 'like',
+        via: 'owner'
+    },
+
+
   	owner: {
   	 	model: 'user'
   	},

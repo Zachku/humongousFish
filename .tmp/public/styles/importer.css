@@ -320,6 +320,9 @@ input.form_submit {
   padding: 0 0 0 0px;
   cursor: pointer;
 }
+.catchImageForm {
+  width: 100%;
+}
 /*-----------footer---------*/
 .footer {
   width: 950px;

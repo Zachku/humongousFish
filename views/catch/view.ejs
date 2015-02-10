@@ -10,6 +10,8 @@
 <div id="CatchForm">
 
 	<h1> <% if(catch1.fish) { %> <%= catch1.fish.name %> <% } %> </h1> 
+	
+	<h2> <% if(likes) { %> <%=likes.length %> <% } else { %> 0 <% } %> users like this catch.
 	<form action="/catch/update/<%=catch1.id%>" class="form" method = 'POST'>
 
 		<!-- IsPublic checkbox -->
@@ -161,19 +163,22 @@
 
 <div id='catchImage'>
 	<h1>Add image</h1>
-		
-	<form action="/catch/uploadImage" enctype="multipart/form-data" method="post">
-		<input type='hidden', name='id' value=<%= catch1.id %>>
+	<div class='catchImageForm'>	
+		<form action="/catch/uploadImage" enctype="multipart/form-data" method="post">
+			<input type='hidden', name='id' value=<%= catch1.id %>>
 
-		<div class="form_row">
-	    	<input type="file" name="avatar" multiple="multiple" accept="image/*">
-		</div>
+			<div class="form_row">
+	    		<input type="file" name="avatar" multiple="multiple" accept="image/*">
+			</div>
 
-		<div class="form_row">
-	    	<input type="submit" value="Upload">
-		</div>
-	</form>
+			<div class="form_row">
+	    		<input type="submit" value="Upload">
+			</div>
+		</form>
+	</div>
 	<% if(catch1.imageUrl) { %>
+	<div>
 	   <img src="/images/avatarImages/<%= catch1.imageUrl %>" alt="Mountain View" IMG HEIGHT=250 WIDTH=250>
+	</div>
 	<% } %>
 </div>

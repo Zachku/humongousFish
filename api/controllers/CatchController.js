@@ -11,7 +11,7 @@ module.exports = {
 	*/
 	index: function(req, res, next){
 		if(!req.session.authenticated) return res.redirect('user/login');
-		Catch.find({owner : req.session.User.id}).populate('fish').populate('lure').exec(function(err, catches){
+		Catch.find({sort: 'date DESC',owner : req.session.User.id}).populate('fish').populate('lure').exec(function(err, catches){
 			return res.view('', {
 				catches: catches
 			}); 
@@ -43,14 +43,17 @@ module.exports = {
 			Lure.find({'userId': req.session.User.id}).exec(function (err, lures){
 				if(err || !lures) return res.serverError();
 				Fish.find().exec(function (err, fishes){
-					Lake.find({'userId': req.session.User.id}).exec(function (err, lakes){
-						if(err || !fishes) return res.serverError();
-						return res.view('catch/view/', {
-							catch1: catch1, 
-							lures: lures, 
-							lakes: lakes, 
-							fishes: fishes,
-							date: catch1.formatDate()
+					Like.find({'owner': req.param('id')}).exec(function (err, likes){
+						Lake.find({'userId': req.session.User.id}).exec(function (err, lakes){
+							if(err || !fishes) return res.serverError();
+							return res.view('catch/view/', {
+								catch1: catch1, 
+								lures: lures, 
+								likes: likes,
+								lakes: lakes, 
+								fishes: fishes,
+								date: catch1.formatDate()
+							});
 						});
 					});
 				});
@@ -63,9 +66,12 @@ module.exports = {
 	*/
 	viewPublic: function(req, res, next){
 		Catch.findOne({'id' : req.param('id')}).populate('owner').populate('fish').populate('lure').populate('lake').exec(function (err, catch1){
-			if(err || !catch1) return res.serverError();
-			return res.view('catch/viewPublic/', {
-				catch1: catch1
+			Like.find({'owner': req.param('id')}).exec(function (err, likes){
+				if(err || !catch1) return res.serverError();
+				return res.view('catch/viewPublic/', {
+					likes: likes,
+					catch1: catch1
+				});
 			});
 		});
 
@@ -167,10 +173,6 @@ module.exports = {
 		});
 	},
 
-	ajax: function(req, res, next){
-		return res.send("asdfasdfasdf");
-	}, 
-
 	uploadImage: function  (req, res) {
 		var catchId = req.param('id');
 		var uploadPath = '../public/images/avatarImages';
@@ -188,6 +190,15 @@ module.exports = {
 				return res.redirect('catch/view/' + req.param('id'));
 			});
 		});
-  }
+  	},
+
+  	likeCatch: function (req, res) {
+		params.userId = req.session.User.id;
+		params.owner = req.param('catchId');
+
+		Like.create(params, function(err, newLike){
+			return res.redirect('catch/view/'+req.param('catchId'));
+		});
+  	}
 };
 
