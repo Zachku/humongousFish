@@ -12,7 +12,7 @@
 		<!-- action="/chatMessage/sendMessage" -->
 		<form id="form">
 			<input type="text" name='message' id='chatMessageInput' <% if(!req.session.User) {%> placeholder="You have to log in to send chat messages." disabled<% } %>>
-			<input class="chat_submit" id="sendButton" type="submit" value="Send2" <% if(!req.session.User) {%> disabled<% } %>>
+			<input class="chat_submit" id="sendButton" type="submit" value="Send" <% if(!req.session.User) {%> disabled<% } %>>
 		</form>
 	</div>
 </div>
