@@ -68,7 +68,8 @@ module.exports.policies = {
     refreshMessages: true,
     chat: true,
     addMessage: 'sessionAuth',
-    sub: true
+    sub: true,
+    deleteMessages: 'sessionAuth'
   }
   /***************************************************************************
   *                                                                          *

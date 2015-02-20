@@ -6,9 +6,17 @@
  */
  module.exports = {
  	/*
+ 	* Delete all messages
+	*/
+	deleteMessages: function (req, res, next){
+		ChatMessage.deleteAll(next);
+		return res.redirect('chatMessage/chat');
+	},
+
+ 	/*
 	*
 	*
-	*	Functions to use ugly longpolling chat(n)
+	*	Functions to implement longpolling chat(n)
  	*
 	*
  	*/

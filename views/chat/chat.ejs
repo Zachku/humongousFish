@@ -1,6 +1,7 @@
 <h1 style="text-align: center;"> Fisher's chat </h1>
 <h2 style="text-align: center;">Message will be removed automatically when it is more than 10 minutes old.</h2>
-<p style="text-align: center;"> Socket implementation </P> 
+<p style="text-align: center;"> Socket implementation </p>
+
 <div id='chatMessagesAndForm'>
 	<!-- div which is updated by ajax call -->
 	<div id = 'chatMessages'>
@@ -14,10 +15,18 @@
 			<input type="text" name='message' id='chatMessageInput' <% if(!req.session.User) {%> placeholder="You have to log in to send chat messages." disabled<% } %>>
 			<input class="chat_submit" id="sendButton" type="submit" value="Send" <% if(!req.session.User) {%> disabled<% } %>>
 		</form>
+		</div>
 	</div>
-</div>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<%if(req.session.User) { %>
+		<div id = "messageDeleteForm"> 
+			<form action="/chatMessage/deleteMessages">
+				<input type='submit' value="Delete messages" class="delete_messages"> 
+			</form>
+		</div>
+	<% } %>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
 

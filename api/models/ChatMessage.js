@@ -23,7 +23,7 @@ module.exports = {
   	formatDate: function (){
         var formattedDate = new Date(this.timestamp);
         var hour = formattedDate.getHours();
-        var minute = formattedDate.getMinutes();
+        var minute = (formattedDate.getMinutes() < 10) ? + "" + formattedDate.getMinutes() : formattedDate.getMinutes();
         var day = (formattedDate.getDate() < 10) ? 0 + "" + formattedDate.getDate() : formattedDate.getDate();
         var month = ((formattedDate.getMonth()+1) < 10) ? 0 + "" + (formattedDate.getMonth()+1) : (formattedDate.getMonth()+1);
         return day + "." + month + "." + formattedDate.getFullYear() + " " + hour + ":" + minute; 
@@ -50,6 +50,11 @@ module.exports = {
         } 
       }
     });
+  },
+
+  deleteAll: function (next) {
+    ChatMessage.destroy().exec(function deleteCB(err){});
+    next();         
   }
 };
 
