@@ -66,10 +66,10 @@ module.exports.policies = {
     index: true,
     sendMessage: 'sessionAuth',
     refreshMessages: true,
+    deleteMessages: 'sessionAuth',
     chat: true,
     addMessage: 'sessionAuth',
-    sub: true,
-    deleteMessages: 'sessionAuth'
+    sub: true
   }
   /***************************************************************************
   *                                                                          *
