@@ -93,7 +93,7 @@ module.exports = {
 				req.session.authenticated = true;
 				req.session.User = user;
 
-				return res.redirect('user/view/' + user.id);
+				return res.redirect('/index');
 			})
 		})
 	},

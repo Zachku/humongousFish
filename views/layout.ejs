@@ -50,11 +50,12 @@ Header image
   <div class="menu">
     <ul>
       <li><a href="/index">Home </a></li>
-      <li><a href="/chatMessage/index"> Chat </a></li>
+      <li><a href="/chatMessage/chat"> Chat </a></li>
       <% if(!req.session.User) {%>
       <li><a href="/user/register">Register </a></li>
       <% } %>
       <% if(req.session.User) {%>
+      <li><a href="/user/view/<%= req.session.User.id %>"> MyProfile </a></li>
       <li><a href="/user/">Registered users </a></li>
       <li><a href="/catch/">Catches </a></li>
       <li><a href="/lure/index"> My lures </a></li>

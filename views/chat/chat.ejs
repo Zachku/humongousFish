@@ -1,0 +1,58 @@
+<h1 style="text-align: center;"> Fisher's chat </h1>
+<h2 style="text-align: center;">Message will be removed automatically when it is more than 10 minutes old.</h2>
+<p style="text-align: center;"> Socket implementation </P> 
+<div id='chatMessagesAndForm'>
+	<!-- div which is updated by ajax call -->
+	<div id = 'chatMessages'>
+		<%- partial ('chatMessages.ejs') %>
+	</div>
+
+	<div id = 'chatForm'>
+		<input type="checkbox" checked="true" id="followMessagesCheckbox"> Follow messages
+		<!-- action="/chatMessage/sendMessage" -->
+		<form id="form">
+			<input type="text" name='message' id='chatMessageInput' <% if(!req.session.User) {%> placeholder="You have to log in to send chat messages." disabled<% } %>>
+			<input class="chat_submit" id="sendButton" type="submit" value="Send2" <% if(!req.session.User) {%> disabled<% } %>>
+		</form>
+	</div>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+<script type="text/javascript">
+	$("#chatMessages").scrollTop($("#chatMessages")[0].scrollHeight);
+	$(document).ready(function(){
+		//Subscribe user to ChatMessage model
+		io.socket.get('/chatMessage/sub/', function(resData, jwres) {});	
+
+		//New ChatMessage 
+	    io.socket.on('chatmessage', function (msg) {
+	    	if (msg.verb == 'created') {
+	    		var message = msg.data;
+    			$("#chatMessages").append('<div id="chatMessage">'+
+		  			'<div class = "chatMessageTimestamp">'+
+		  				message.timestamp + ' ' + message.owner +
+		  			'</div>'+
+		  			'<div class = "chatMessageMessage"> '+
+		  				message.chatMessage +
+		  			'</div>'+
+		  		 '</div>');
+				$("#chatMessages").scrollTop($("#chatMessages")[0].scrollHeight);
+		  	}
+		});
+
+	});
+
+	$("#sendButton").click(function(){
+		var url = "/chatMessage/addMessage"; // the script where you handle the form input.
+
+	    io.socket.post(url, {message: $("#chatMessageInput").val()}, function(resData){
+	    		//$("#chatMessages").append("resData");
+	    	}
+	    );
+	    $("#chatMessageInput").val("");
+		return false; // avoid to execute the actual submit of the form.
+	});
+</script>

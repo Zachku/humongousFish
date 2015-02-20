@@ -5,6 +5,17 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
  module.exports = {
+ 	/*
+	*
+	*
+	*	Functions to use ugly longpolling chat(n)
+ 	*
+	*
+ 	*/
+
+ 	/**
+ 	* Index function
+ 	*/
  	index: function (req, res){
 		ChatMessage.deleteOld();
 		ChatMessage.find({sort: 'timestamp ASC'}).populate('owner').exec(function(err, messages){
@@ -30,5 +41,57 @@
 			if(err) return res.serverError();
 			return res.view('chat/chatMessages', {layout:null, messages: messages});
 		});
+	},
+
+
+	/**
+	*
+	*
+	*	Functions to use sails' socket to chat(y)
+	*
+	*
+	*/
+
+	/**
+	* View function for socket chat
+	*/
+	chat: function (req, res) {
+		ChatMessage.find({sort: 'timestamp ASC'}).populate('owner').exec(function(err, messages){
+			if(err) return res.send(err);
+			return res.view('chat/chat', {messages: messages});
+		});
+	}, 
+
+	/**
+	* Message addition to socket implementation
+	*/
+	addMessage: function (req, res, next){
+		var params = req.params.all();
+		params.owner = req.session.User.id;
+
+		if(req.isSocket){
+
+			ChatMessage.create({
+				owner: params.owner, 
+				message: params.message
+			}).exec( function created(err, chatMessage){
+				ChatMessage.publishCreate({
+					id: chatMessage.id, 
+					owner: req.session.User.username,
+					chatMessage: chatMessage.message,
+					timestamp: chatMessage.formatDate()
+				});
+			});
+		}
+	}, 
+
+	/**
+	* Subscribe user to new ChatMessages
+	*/
+	sub: function (req, res){
+		ChatMessage.deleteOld();
+		if(req.isSocket){
+			ChatMessage.watch(req);
+		}
 	}
  };
