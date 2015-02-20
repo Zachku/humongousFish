@@ -8,8 +8,8 @@
  	/*
  	* Delete all messages
 	*/
-	deleteMessages: function (req, res, next){
-		ChatMessage.deleteAll(next);
+	deleteMessages: function (req, res){
+		ChatMessage.deleteAll();
 		return res.redirect('chatMessage/chat');
 	},
 

@@ -52,9 +52,8 @@ module.exports = {
     });
   },
 
-  deleteAll: function (next) {
-    ChatMessage.destroy().exec(function deleteCB(err){});
-    next();         
+  deleteAll: function () {
+    ChatMessage.destroy().exec(function deleteCB(err){});       
   }
 };
 
