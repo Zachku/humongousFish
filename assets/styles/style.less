@@ -33,7 +33,7 @@ h1{
 	font-family: 'Lobster', Georgia, Times, serif;
 	font-size: 350%;
 	margin:0px;
-	padding:10px 0 30px 0px;
+	padding:10px 0 30px 10px;
 	color:#343434;
 }
 h2{
@@ -51,7 +51,7 @@ h3{
 	font-weight:normal;
 }
 .header{
-	width:960px;
+	max-width:960px;
 	padding:0 10px 0 10px; 
 	height:120px;
 	margin:auto;
@@ -59,7 +59,7 @@ h3{
 }
 .headerImage{
 	margin:auto;
-	width:1900px;
+	max-width:1900px;
 	max-width: 100%;
 	height:231px;
 	background-image: url("/images/trees4.jpg");
@@ -95,7 +95,7 @@ h3{
 	margin:0 3px 0 3px;
 }
 .main_container{
-	width:960px;
+	max-width:960px;
 	padding:10px 10px 0 10px; 
 	margin:auto;
 	background: white;
@@ -106,9 +106,57 @@ h3{
 }
 
 /*----------------menu tab----------------------*/
-.menu {font-size:14px;padding:0px; float:left; width:890px;}
+
+/* Mobile menu */
+#toggle{
+	text-align:center; 
+	color:#fff; 
+	background: #666666; 
+	border:none; 
+	padding:10px 50px 10px 50px; 
+	margin-top: 3px;
+}
+.mobile_menu{
+	font-size:14px;
+	padding:0px; 
+	float:left; 
+	width:100%;
+}
+.mobile_menu a, .mobile_menu a:visited {
+	font-size:14px;
+	text-decoration:none;
+	color:white;
+	margin:0 30px 0 0;
+}
+.mobile_menu ul li {
+	padding: 10px 20px;
+	background:#5a5a5a; 
+	width: 50%;
+}
+
+
+@media only screen and (max-device-width: 600px) {
+	.menu{display: none;}
+	.header_socials{display: none;}
+	.slogan{display: none;}
+}
+@media only screen and (min-device-width: 600px) {
+	.mobile_menu{display: none;}
+}
+
+.menu {
+	font-size:14px;
+	padding:0px; 
+	float:left; 
+	width:890px;
+}
 /* remove all the bullets, borders and padding from the default list styling */
-.menu ul {padding:0;margin:0;list-style-type:none; height:35px;}
+.menu ul {
+	padding:0;
+	margin:0;
+	list-style-type:none; 
+	height:35px;
+}
 /* style the sub-level lists */
 .menu ul ul {width: auto;}
 /* float the top list items to make it horizontal and a relative positon so that you can control the dropdown menu positon */
@@ -236,7 +284,7 @@ input.form_submit{float:right; clear:both; margin:20px 30px 0 0px; width:149px; 
 
 /*-----------footer---------*/
 .footer{
-	width:950px;
+	max-width:950px;
 	clear:both;
 	text-align:left;
 	padding:12px 0 12px 10px;
