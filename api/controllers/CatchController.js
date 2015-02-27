@@ -119,6 +119,7 @@ module.exports = {
 	* Update-function for weight, date and coords
 	*/
 	update: function (req, res, next){
+		if(req.method !== 'POST') return res.forbidden();
 		Catch.update({id : req.param('id')}, 
 			{
 				weight : req.param('weight'), 

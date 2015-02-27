@@ -45,8 +45,8 @@ module.exports = {
 	},
 
 	delete: function (req, res){
-		// get method not allowed
-		if(req.method === 'GET') return res.forbidden();
+		// only post method allowed
+		if(req.method !== 'POST') return res.forbidden();
 
 
 		var id = req.param('id');

@@ -44,6 +44,7 @@ module.exports = {
 	},
 
 	delete: function (req, res){
+		if(req.method !== 'POST') return res.forbidden();
 		var id = req.param('id');
 		Lake.destroy({id:id}).exec(function deleteCB(err){
 			if(err) return res.send(err);
