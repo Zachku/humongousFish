@@ -106,6 +106,27 @@ module.exports = {
 		req.session.destroy();
 
 		return res.redirect('user/login');
+	}, 
+
+	uploadAvatarImage: function ( req, res, next){
+
+		var uploadPath = '../public/images/avatarImages';
+
+		var userId = req.session.User.id;
+
+		req.file('avatar').upload({dirname: uploadPath, saveAs: userId + ".png"},function (err, files) {
+			if (err)
+				return res.serverError(err);
+
+			User.update({id : userId}, {avatarImageUrl : userId + ".png"})
+			.exec(function(err, catch1){
+				if(err) return next(err);
+				req.session.flash = {
+					message: "Success!" 
+				}
+				return res.redirect('user/view/' + userId);
+			});
+		});
 	}
 	
 };

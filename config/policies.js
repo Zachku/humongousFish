@@ -59,6 +59,7 @@ module.exports.policies = {
     processLogin: true,
     view: ['sessionAuth', 'isMyProfile'],
     update: ['sessionAuth', 'isMyProfile'],
+    uploadAvatarImage: 'sessionAuth',
     delete: ['sessionAuth', 'isMyProfile']
   },
   ChatMessageController: {

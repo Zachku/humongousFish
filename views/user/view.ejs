@@ -1,30 +1,51 @@
 
-<h1>My profile</h1>
+<div class = "myProfileForm">
+	<h1>My profile</h1>
+	<form id="form" class="form" action="/user/update" method="post">
+		
+		<input type="hidden" name="id" value="<%= user.id %>">
 
-<form id="form" class="form" action="/user/update" method="post">
-	
-	<input type="hidden" name="id" value="<%= user.id %>">
+		<div class = "form_row">
+			<label class = "form_label" >Email</label>
+			<input class="form_input" type="text" name="email" placeholder="Email" value="<%= user.email %>" autofocus>
+		</div>
 
-	<div class = "form_row">
-		<label class = "form_label" >Email</label>
-		<input class="form_input" type="text" name="email" placeholder="Email" value="<%= user.email %>">
+		<div class = "form_row">
+			<label class = "form_label" >Motto</label>
+			<input class="form_input" type="text" name="motto" placeholder="Motto" value="<%= user.motto %>">
+		</div>
+
+		<div class = "form_row">
+			<label class = "form_label" >Avatar Image Url</label>
+			<input class="form_input" type="text" name="avatarImageUrl" placeholder="Avatar Image Url" value="<%= user.avatarImageUrl %>">
+		</div>
+
+		<div class = "form_row">
+			<input class="form_submit" type='submit' value="Save">
+		</div>
+
+	</form>
+</div>
+
+<div class="myProfileAvatarImage">
+
+	<h1>Add image</h1>
+	<div class='avatarhImageForm'>	
+		<form action="/user/uploadAvatarImage" enctype="multipart/form-data" method="post">
+			<input type='hidden', name='id' value=<%= user.id %>>
+
+			<div class="form_row">
+	    		<input type="file" name="avatar" multiple="multiple" accept="image/*">
+			</div>
+
+			<div class="form_row">
+	    		<input type="submit" value="Upload">
+			</div>
+		</form>
 	</div>
-
-	<div class = "form_row">
-		<label class = "form_label" >Motto</label>
-		<input class="form_input" type="text" name="motto" placeholder="Motto" value="<%= user.motto %>">
+	<% if(user.avatarImageUrl) { %>
+	<div class= "avatarImage">
+	   <img src="/images/avatarImages/<%= user.avatarImageUrl %>" alt="Image has disappeared. Maybe because restart of the server. Problem will be fixed." IMG HEIGHT=250>
 	</div>
-
-	<div class = "form_row">
-		<label class = "form_label" >Avatar Image Url</label>
-		<input class="form_input" type="text" name="avatarImageUrl" placeholder="Avatar Image Url" value="<%= user.avatarImageUrl %>">
-	</div>
-
-	<div class = "form_row">
-		<input class="form_submit" type='submit' value="Save">
-	</div>
-</form>
-
-<script type="text/javascript">
-	document.forms['form'].elements['weight'].focus();
-</script>
+	<% } %>
+</div>
