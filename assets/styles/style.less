@@ -35,20 +35,23 @@ h1{
 	margin:0px;
 	padding:10px 0 30px 10px;
 	color:#343434;
+	text-align: center;
 }
 h2{
 	font-family: 'Lobster', Georgia, Times, serif;
 	font-size:22px;
 	color:#343434;
-	padding:30px 0 10px 0;
 	margin:0px 0 20px 0;
+	text-align: center;
 }
 h3{
 	font-size:20px; 
-	color:#343434; 
+	font-family: 'Lobster', Georgia, Times, serif;
+	color:#33CC66; 
 	padding:0; 
 	margin:0px; 
 	font-weight:normal;
+	text-align: center;
 }
 .header{
 	max-width:960px;
@@ -342,27 +345,48 @@ th{
 	padding: 10px 0px 10px 0;
 }
 
-/*------------------------------------Catch Index -------------------------------------*/
-.catchInIndex{
+/*------------------------------------Catch & User Index -------------------------------------*/
+.catchInIndex,
+.userInIndex{
 	width: 80%;
 	background: #484848;
 	color: white;
 	border-radius: 10px;
-	margin: 10px 0 10px 0;
-	padding: 10px 10px 10px 10px;
+	margin: 10px auto 10px auto;
+	padding: 0 10px 10px 10px;
 }
 
-.catchImageInIndex{
-	padding: 0 10px;
+.userInIndex ul, 
+.catchInIndex ul {
+	list-style-type: none;
 }
-.fishInIndex{
+
+.catchImageInIndex,
+.avatarImageInIndex{
+	width: 100%;
+	margin: auto;
 }
+
 .fishInIndex a{
 	font-size: 200%;
 	padding-bottom: 10px;
 	color: white;
 }
 
+#addCatchLink{
+	text-align: center;
+}
+
+.findUser{
+	width: 80%;
+	margin:auto;
+}
+.user_input,{
+	width:100%;
+	text-align: center;
+	padding:10px;
+	border-radius: 8px;
+}
 /*-----------------------------------Chat-----------------------------------------*/
 #messageDeleteForm{
 	padding-top:10px;
@@ -451,6 +475,6 @@ th{
 }
 
 .avatarImage{
-	max-width: 250px;
+	width: 100%;
 	margin: auto;
 }

@@ -43,7 +43,7 @@ module.exports = {
     	type: 'STRING'
     },
 
-    isPUblic: {
+    isPublic: {
         type: 'BOOLEAN',
         defaultsTo: false
     },

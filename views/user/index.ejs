@@ -1,28 +1,26 @@
 <h1> Users </h1>
-<table>
-	<tr>
-		<th> username </th>
-		<th> email</th>
-		<th> motto </th>
-    <th> Delete </th>
-	</tr>
-    <% for(var i=0; i<users.length; i++) { %>
-        <tr>
-           <td> 
-           	<a href='view/<%= users[i].id %>'> <%= users[i].username %> </a>
-           </td>
-           <td> 
-           	<%= users[i].email %>
-           </td>
-           <td> 
-           	<%= users[i].motto %>
-           </td>
-           <td> 
-           	<form action="/user/delete" method='post'>
-           		<input type="submit" class="table_submit" value='delete'>
-           		<input type='hidden'  name='id' value=<%= users[i].id %>>
-           	</form>
-           </td>
-        </tr>
-    <% } %>
-</table>
+<div class="findUser"> 
+    <input type="text" id="username" name="username" placeholder="Type username to search for users:" autocomplete="off" autofocus class="user_input">
+</div>
+
+<div id = "foundUsers">
+</div>
+
+<script type="text/javascript">
+  $("#username").keyup(function() {
+    if($("#username").val()=="") return false;
+    var url = "/user/findUser"; 
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: {username : $("#username").val()}, // serializes the form's elements.
+           success: function(result)
+           {
+               $("#foundUsers").html(result);
+           }
+         });
+
+    return false; // avoid to execute the actual submit of the form.
+  });
+</script>

@@ -19,6 +19,25 @@ module.exports = {
 	},
 
 	/*
+	* Public index function. Indexing all public catches of given user
+	*/
+	indexPublic: function(req, res, next){
+		User.findOne({'id': req.param('id')}).exec(function(err, user){
+			if(err) return err;
+			console.log(req.param('id'));
+			Catch.find({
+				sort: 'date DESC',
+				where: { isPublic: true },
+				owner : req.param('id')}).populate('fish').populate('lure').exec(function(err, catches){
+				return res.view('', {
+					catches: catches,
+					user: user
+				}); 
+			});
+		});
+	},
+
+	/*
 	* Delete function for specific catch
 	*/
 	delete: function (req, res){

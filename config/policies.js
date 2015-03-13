@@ -21,6 +21,7 @@ module.exports.policies = {
   CatchController: {
     '*': false, 
     viewPublic: ['sessionAuth','isPublic'],
+    indexPublic: 'sessionAuth',
     index: 'sessionAuth',
     uploadImage: true,
     create: 'sessionAuth',
@@ -60,7 +61,8 @@ module.exports.policies = {
     view: ['sessionAuth', 'isMyProfile'],
     update: ['sessionAuth', 'isMyProfile'],
     uploadAvatarImage: 'sessionAuth',
-    delete: ['sessionAuth', 'isMyProfile']
+    delete: ['sessionAuth', 'isMyProfile'],
+    findUser: true
   },
   ChatMessageController: {
     '*': false,

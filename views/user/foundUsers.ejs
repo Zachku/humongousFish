@@ -1,0 +1,15 @@
+<% for(var i=0; i<users.length; i++) { %>
+	<a href="/catch/indexPublic/<%= users[i].id %>"> 
+	<div class="userInIndex"> 
+		<ul class="userList">
+			<li> <h3> <%= users[i].username %> </h3></li>
+			<%if(users[i].avatarImageUrl) { %>
+	        <div class='avatarImageInIndex'>
+	          <img src="/images/avatarImages/<%= users[i].avatarImageUrl %>" alt="Img" IMG HEIGHT=50>
+	        </div>     
+ 			<% } %>
+			<li> Motto: <%= users[i].motto %> </li>
+		</ul>
+	</div>
+	</a>
+<% } %>

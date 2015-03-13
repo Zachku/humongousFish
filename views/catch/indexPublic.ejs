@@ -1,16 +1,45 @@
 <script src="/js/confirm.js"></script>
-<h1>Catches</h1>
+<h1><%=user.username%>'s public catches</h1>
 
-<div id="addCatchLink">
-<a href="/catch/create">Add new Catch </a>
-</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#dialog").dialog({
+        modal: true,
+        bgiframe: true,
+        width: 500,
+        height: 200,
+        autoOpen: false
+    });
+
+
+    $("#delete").click(function(e) {
+
+        e.preventDefault();
+        var theHREF = $(this).attr("href");
+
+        $("dialog").dialog('option', 'buttons', {
+            "Confirm" : function() {
+                window.location.href = theHREF;
+            },
+            "Cancel" : function() {
+                $(this).dialog("close");
+            }
+        });
+
+        $("#dialog").dialog("open");
+
+    });
+
+});
+</script> 
+
   <% for(var i=0; i<catches.length; i++) { %>
 
-    <a href="/catch/view/<%= catches[i].id %>"> 
+    <a href="/catch/viewPublic/<%= catches[i].id %>"> 
       <div class = "catchInIndex"> 
 
         <div class = "fishInIndex">
-        <ul>  
+        <ul>
           <li> 
             <h3>
               <%if(catches[i].fish) { %>
@@ -23,7 +52,6 @@
               <% } %> 
             </h3>
           </li>
-          <li><%if(catches[i].isPublic == true) { %> This catch is public to other users <%} else { %> Private catches <% } %> </li>
           <li><%= catches[i].formatDate() %></li>
           <%if(catches[i].lure) { %>
           <li>

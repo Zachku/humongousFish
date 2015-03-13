@@ -127,6 +127,14 @@ module.exports = {
 				return res.redirect('user/view/' + userId);
 			});
 		});
+	},
+
+	findUser: function ( req, res, next){
+		var usernameToSearch = req.param('username');
+		User.find({username: {'startsWith' : usernameToSearch}}).exec(function(err, users){
+			if(err) return res.view('404');
+			return res.view('user/foundUsers', {users: users, layout: null});
+		});
 	}
 	
 };
