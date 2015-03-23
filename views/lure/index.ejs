@@ -1,5 +1,5 @@
 <h1>Lures</h1>
-<table>
+<table class="table table-striped">
 	<tr>
 		<th> Model </th>
 		<th> Brand </th>
@@ -35,25 +35,24 @@
 <% } %>
 </table>
 
+<!-- Form for new lures -->
+  
 <form id="form" class="form" action="/lure/processCreate" method="post">
-  <h2>Add lure</h2>
-  <div class = "form_row">
-    <label class = "form_label" >Brand</label>
-    <input class="form_input" type="text" name="brand" placeholder="Brand">
+  <h2>Add a new lure </h2>
+  <div class = "form-group">
+    <label for="brand" >Brand</label>
+    <input class="form-control" id="brand" type="text" name="brand" placeholder="Brand" autofocus>
   </div>
-  <div class = "form_row">
-    <label class = "form_label" >Model</label>
-    <input class="form_input" type="text" name="model" placeholder="Model" >
+  <div class = "form-group">
+    <label for="model" >Model</label>
+    <input class="form-control" id="model" type="text" name="model" placeholder="Model" >
   </div>
-  <div class = "form_row">
-    <label class = "form_label" >Url</label>
-    <input class="form_input" type="text" name="url" placeholder="Url" >
+  <div class = "form-group">
+    <label for="url" >Url</label>
+    <input class="form-control" id="url" type="text" name="url" placeholder="Url" >
   </div>
-  <div class = "form_row">
-    <input class="form_submit" type='submit' value="Add">
+  <div class = "form- group">
+    <input class="btn btn-lg btn-success" type='submit' value="Add">
   </div>
 </form>
 
-<script type="text/javascript">
-document.forms['form'].elements['brand'].focus();
-</script>

@@ -5,23 +5,18 @@
 		
 		<input type="hidden" name="id" value="<%= user.id %>">
 
-		<div class = "form_row">
-			<label class = "form_label" >Email</label>
-			<input class="form_input" type="text" name="email" placeholder="Email" value="<%= user.email %>" autofocus>
+		<div class = "form-group">
+			<label for="email" >Email</label>
+			<input class="form-control" id="email" type="text" name="email" placeholder="Email" value="<%= user.email %>" autofocus>
 		</div>
 
-		<div class = "form_row">
-			<label class = "form_label" >Motto</label>
-			<input class="form_input" type="text" name="motto" placeholder="Motto" value="<%= user.motto %>">
+		<div class = "form-group">
+			<label for = "motto" >Motto</label>
+			<input class="form-control" id="motto" type="text" name="motto" placeholder="Motto" value="<%= user.motto %>">
 		</div>
 
-		<div class = "form_row">
-			<label class = "form_label" >Avatar Image Url</label>
-			<input class="form_input" type="text" name="avatarImageUrl" placeholder="Avatar Image Url" value="<%= user.avatarImageUrl %>">
-		</div>
-
-		<div class = "form_row">
-			<input class="form_submit" type='submit' value="Save">
+		<div>
+			<input class="btn btn-lg btn-success" type='submit' value="Save">
 		</div>
 
 	</form>

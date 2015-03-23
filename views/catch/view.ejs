@@ -10,29 +10,29 @@
 <div id="CatchForm">
 
 	<h1> <% if(catch1.fish) { %> <%= catch1.fish.name %> <% } else { %>Unknown fish <% } %> </h1> 
-	<p><a href="/catch/viewPublic/<%= catch1.id %>">View the public view of this catch</a></p>
+	<h3><a href="/catch/viewPublic/<%= catch1.id %>">View the public view of this catch</a></h3>
 	<h2> <% if(likes) { %> <%=likes %> <% } else { %> 0 <% } %> user(s) like this catch. </h2>
 	<form action="/catch/update/<%=catch1.id%>" class="form" method = 'POST'>
 
 		<!-- IsPublic checkbox -->
-		<div class = "form_row">
-			<label class = "form_label" >Is this catch public to other users?</label>
-			<input type="checkbox" name="isPublic"  value='true'
+		<div class = "form-group">
+			<label for="isPublic" >Is this catch public to other users?</label>
+			<input  type="checkbox" id="isPublic" name="isPublic"  value='true'
 			<%if(catch1.isPublic){ %>
 				checked
 			<% } %>
 		</div>
 
 		<!-- Weight -->
-		<div class = "form_row">
-			<label class = "form_label" >Weight</label>
-			<input class="form_input" type="text" name="weight" value="<%= catch1.weight %>" placeholder="Weight">
+		<div class = "form-group">
+			<label class = "weight" >Weight</label>
+			<input class="form-control" type="text" id="weight" name="weight" value="<%= catch1.weight %>" placeholder="Weight">
 		</div>
 
 		<!-- Date -->
-		<div class = "form_row">
-			<label class = "form_label" >Date</label>
-			<input class="form_input" type="date" value="<%= date %>" name="date" placeholder="Date" >
+		<div class = "form-group">
+			<label for="date" >Date</label>
+			<input class="form-control" id="date" type="date" value="<%= date %>" name="date" placeholder="Date" >
 		</div>
 
 		<!-- latitude & longitude -->
@@ -54,9 +54,9 @@
 
 		
 		<!-- Lure dropdown list -->
-		<div class = "form_row">
-			<label class = "form_label" >Lure (<a href="/lure/create">Add more</a>) <br></label>
-			<select class="form_select" name="lureId">
+		<div class = "form-group">
+			<label for="date" >Lure (<a href="/lure/create">Add more</a>) <br></label>
+			<select class="form-control" id="date" name="lureId">
 				<option value="">--Not selected--</option>
 				<% for(var i = 0; i < lures.length; i++) { %>
 					<option value="<%- lures[i].id %>" 
@@ -72,9 +72,9 @@
 		</div>
 
 		<!-- Fish dropdown list -->
-		<div class = "form_row">
-			<label class = "form_label" >Fish <br></label>
-			<select class="form_select" name="fishId">
+		<div class = "form-group">
+			<label for="fish" >Fish <br></label>
+			<select class="form-control" id="fish" name="fishId">
 				<option value="">--Not selected--</option>
 				<% for(var i = 0; i < fishes.length; i++) { %>
 					<option value="<%- fishes[i].id %>" 
@@ -90,9 +90,9 @@
 		</div>
 
 		<!-- Lake dropdown list -->
-		<div class = "form_row">
-			<label class = "form_label" >Lake <br></label>
-			<select class="form_select" name="lakeId">
+		<div class = "form-group">
+			<label for="lake" >Lake <br></label>
+			<select class="form-control" id="lake" name="lakeId">
 				<option value="">--Not selected--</option>
 				<% for(var i = 0; i < lakes.length; i++) { %>
 					<option value="<%- lakes[i].id %>" 
@@ -107,8 +107,8 @@
 			</select> 
 		</div>
 
-		<div class = "form_row">
-			<input class="form_submit" type='submit' value="Save changes">
+		<div class = "form-group">
+			<input class="btn btn-lg btn-success" type='submit' value="Save changes">
 		</div>
 	</form>
 </div>
@@ -168,11 +168,11 @@
 			<input type='hidden', name='id' value=<%= catch1.id %>>
 
 			<div class="form_row">
-	    		<input type="file" name="avatar" multiple="multiple" accept="image/*">
+	    		<input  type="file" name="avatar" multiple="multiple" accept="image/*">
 			</div>
 
 			<div class="form_row">
-	    		<input type="submit" value="Upload">
+	    		<input class="btn btn-lg btn-success" type="submit" value="Upload">
 			</div>
 		</form>
 	</div>

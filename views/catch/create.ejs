@@ -10,16 +10,16 @@
 <% } %>
 
 <form id="form" class="form" action="/catch/processCreate" method="post">
-	<div class = "form_row">
-		<label class = "form_label" >Weight</label>
-		<input class="form_input" type="text" name="weight" placeholder="Weight">
+	<div class = "form-group">
+		<label for="weight" >Weight</label>
+		<input class="form-control" id="weight" type="text" name="weight" placeholder="Weight">
 	</div>
 
 	
 	<!-- Lure dropdown list -->
-	<div class = "form_row">
-		<label class = "form_label" >Lure (<a href="/lure/create">Add more</a>) <br></label>
-		<select class="form_select" name="lureId">
+	<div class = "form-group">
+		<label for="lure" >Lure (<a href="/lure/create">Add more</a>) <br></label>
+		<select class="form-control" id="lure" name="lureId">
 			<option value="">--Not selected--</option>
 			<% for(var i = 0; i < lures.length; i++) { %>
 			<option value="<%- lures[i].id %>">
@@ -30,9 +30,9 @@
 	</div>
 
 	<!-- Fish dropdown list -->
-	<div class = "form_row">
-		<label class = "form_label" >Fish <br></label>
-		<select class="form_select" name="fishId">
+	<div class = "form-group">
+		<label for="fish" >Fish <br></label>
+		<select class="form-control" id="fish" name="fishId">
 			<option value="">--Not selected--</option>
 			<% for(var i = 0; i < fishes.length; i++) { %>
 			<option value="<%- fishes[i].id %>">
@@ -43,13 +43,13 @@
 	</div>
 
 	<!-- IsPublic checkbox -->
-	<div class = "form_row">
-		<label class = "form_label" >Is this catch public to other users?</label>
-		<input type="checkbox" name="isPublic" value='true'>
+	<div class = "form-group">
+		<label for="isPublic">Is this catch public to other users?</label>
+		<input type="checkbox" id="isPublic" name="isPublic" value='true'>
 	</div>
 
-	<div class = "form_row">
-		<input class="form_submit" type='submit' value="Add">
+	<div class = "form-group">
+		<input class="btn btn-lg btn-success" type='submit' value="Add">
 	</div>
 
 </form>

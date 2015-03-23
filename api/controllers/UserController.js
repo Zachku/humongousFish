@@ -26,11 +26,8 @@ module.exports = {
 		var params = req.allParams();
 		User.update({id : req.param('id')}, 
 			{email : req.param('email'), 
-			motto : req.param('motto'),
-			//password : req.param('password'),
-			avatarImageUrl : req.param('avatarImageUrl')}
+			motto : req.param('motto')}
 			).exec(function(err, user){
-				console.log(req.param('id') + " " + req.param('email'));
 				if(err) return res.view('404');
 				return res.redirect('user/view/'+req.param('id'));
 		});
