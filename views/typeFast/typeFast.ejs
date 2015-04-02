@@ -1,0 +1,74 @@
+<div ng-app="typeFastApp">
+  <div ng-controller="typeFastController">
+    <h1>  TypeFast </h1>
+    <h2> Learn to type faster</h2>
+    
+    <!-- Help section -->
+    <div id ="helpLink">
+      <a id="showHelpButton">Show help</a>
+    </div>
+    
+    <div id="helpImage" style="display:none;">
+      <img src="images/help.png" alt="some_text"></img>
+    </div>
+    <div id="optionsForm">
+      <div id ="helpLink">
+        <a id="pasteTextLink">Toggle between choosing own text and using auto generated text</a>
+        <a id="generateTextLink" style="display:none;">Paste own text</a>
+      </div>
+      <!-- Paste own text -->
+      <div id ="ownText" style="display:none;">
+        <h3>User your own text</h3>
+        
+        <label for="ownText">Paste your own text here:</label>
+        <input type="text" name="ownText" ng-model="ownExerciseInput" class="form-control" ng-trim="false"></input>   
+        <button type="submit" class="btn btn-default" ng-click="submitOwnText()">Submit</button>
+      </div>
+    
+      <!-- Let machine generate the text -->
+      <div id="generatedText">
+        <h3>Use generated text</h3>
+        
+        <label for="wordCount">Length of test</label>
+        <select 
+          ng-options="wordCount as wordCount.count for wordCount in wordCounts"
+          ng-model="wordCount"
+          name="wordCount"
+          class="form-control">
+        </select>
+        <label for="exercise">Choose the letter combination you want to train </label>
+        <select 
+          name="exercise"
+          ng-options="exercise as exercise.name for exercise in exercises"
+          ng-model="exercise"
+          ng-change="generateText()"
+          class="form-control">
+        </select>    
+      </div>
+    </div>
+    
+    <div class="form-group" id="type-speed-form">
+      <label for="areaOfExercises"></label>
+      <h2>Choose text to train and start test by typing the first character</h2>
+      <textarea name="areaOfExercises" id="areaOfExercises" rows="5" class="form-control" disabled ng-model="exerciseText"></textarea>
+      <input type="text" id="textInput" ng-model="textInput" ng-change="check()" class="form-control" ng-trim="false" ng-focus="isFocused" ng-disabled="isInputDisabled"></input>
+    </div>
+    <p> Start time : {{start}} <br>End time: {{end}} </p>
+  </div>
+ </div>
+
+
+<!-- Some JQuery code to show and hide help image -->
+<script>
+  $( "#showHelpButton" ).click(function() {
+    $("#helpImage").toggle();
+  });
+</script>
+
+<!-- Some JQuery code to show and hide advanced options -->
+<script>
+  $( "#pasteTextLink" ).click(function() {
+    $("#ownText").toggle();
+    $("#generatedText").toggle();
+  });
+</script>

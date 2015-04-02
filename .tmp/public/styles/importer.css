@@ -32,12 +32,6 @@ body {
 .clear {
   clear: both;
 }
-p {
-  padding: 5px 0 5px 0;
-  margin: 0px;
-  line-height: 18px;
-  text-align: left;
-}
 a {
   color: #de462a;
   text-decoration: underline;
@@ -46,28 +40,22 @@ a {
   text-align: center;
 }
 h1 {
-  font-family: 'Lobster', Georgia, Times, serif;
-  font-size: 350%;
-  margin: 0px;
-  padding: 10px 0 30px 10px;
-  color: #343434;
+  font: 400 95px/1.1 'Rancho', Georgia, serif;
+  color: #2f99ba;
   text-align: center;
 }
 h2 {
-  font-family: 'Lobster', Georgia, Times, serif;
-  font-size: 22px;
-  color: #343434;
-  margin: 0px 0 20px 0;
+  font: 400 25px/1.6 'Gudea', Verdana, Helvetica, sans-serif;
   text-align: center;
 }
 h3 {
-  font-size: 20px;
-  font-family: 'Lobster', Georgia, Times, serif;
-  color: #33CC66;
-  padding: 0;
-  margin: 0px;
-  font-weight: normal;
+  font: 400 20px/1.6 'Gudea', Verdana, Helvetica, sans-serif;
   text-align: center;
+}
+p {
+  font: 400 17px/1.6 'Gudea', Verdana, Helvetica, sans-serif;
+  line-height: 150%;
+  font-size: 16px;
 }
 .header {
   max-width: 960px;
@@ -454,7 +442,7 @@ th{
   color: white;
   border-radius: 10px;
   margin: 10px auto 10px auto;
-  padding: 20px 10px 10px 10px;
+  padding: 2px 10px 10px 10px;
 }
 .userInIndex ul,
 .catchInIndex ul {
@@ -565,6 +553,38 @@ th{
 }
 .avatarImage {
   width: 100%;
+  margin: auto;
+}
+/******************************** Type fast *********************************/
+#start {
+  margin-bottom: 20px;
+}
+#helpImage,
+#helpLink {
+  text-align: center;
+  margin-top: 20px;
+}
+#footer {
+  max-width: 700px;
+  margin: auto;
+  text-align: right;
+  color: #2f99ba;
+}
+#type-speed-form {
+  margin: auto;
+  width: 100%;
+}
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+#areaOfExercises {
+  color: #2f99ba;
+  font-size: 200%;
+}
+#optionsForm {
+  max-width: 50%;
+  text-align: left;
   margin: auto;
 }
 /*! responsive-nav.js 1.0.34 by @viljamis */

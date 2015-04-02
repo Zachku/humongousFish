@@ -1,0 +1,35 @@
+﻿
+#start{
+    margin-bottom: 20px;
+}
+
+#helpImage, #helpLink{
+    text-align:center;
+    margin-top: 20px;
+}
+#footer {
+    max-width: 700px;
+    margin: auto;
+    text-align: right;
+    color: #2f99ba;
+}
+
+#type-speed-form {
+    margin: auto;
+    width: 100%;
+}
+
+textarea {
+   font-family: inherit;
+   font-size: inherit;
+}
+#areaOfExercises{
+    color: #2f99ba;
+    font-size: 200%;
+}
+
+#optionsForm{
+    max-width:50%;
+    text-align:left;
+    margin: auto;
+}
