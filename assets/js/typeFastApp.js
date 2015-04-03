@@ -14,6 +14,8 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
             { name : "12345"},
             { name : "67890" },
             { name : "1234567890" },
+            { name : "yhnmjuik,.lopö-åä"},
+            { name : "qazwsxedcrfvtgb"},
             { name : "qwertyuipåasdfghjklöääzxcvbnm" },
             { name : "qwertyuipåasdfghjklöääzxcvbnm1234567890" },
         ];
@@ -123,7 +125,7 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
         $scope.reset = function () {
             $scope.start = "0";
             $scope.end = "0";
-            typos = 0;
+            errors = 0;
             $scope.textInput = "";
             started = false;
             $scope.isInputDisabled = false;
