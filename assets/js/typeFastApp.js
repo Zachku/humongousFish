@@ -18,6 +18,7 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
             { name : "qazwsxedcrfvtgb"},
             { name : "qwertyuipåasdfghjklöääzxcvbnm" },
             { name : "qwertyuipåasdfghjklöääzxcvbnm1234567890" },
+            { name : "Random words"}
         ];
         
         // possible lengths for test
@@ -36,7 +37,21 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
 
         $scope.currentExercise = "";
         
-        
+        var words = [
+            "israelilaisille", "että", "he", "kääntyvät", "takaisin", "ja", "leiriytyvät", "Pii-Hahirotin", "kohdalle", "Migdolin", "ja", "meren", "välille", "leiriytykää", "vastapäätä", "Baal-Sefonia", "meren", "rannalle",
+            "farao", "on", "ajatteleva", "että", "israelilaiset", "ovat", "eksyneet", "maassa", "ja", "että", "erämaa", "on", "saartanut", "heidät",
+            "minä", "paadutan", "faraon", "sydämen", "niin", "että", "hän", "ajaa", "heitä", "takaa", "mutta", "minä", "näytän", "kunniani", "tuhoamalla", "faraon", "ja", "koko", "hänen", "sotajoukkonsa", "ja", "niin", "egyptiläiset", "tulevat", "tietämään", "että", "minä", "olen", "Herra", "Ja", "he", "tekivät", "niin",
+            "Egyptin", "kuninkaalle", "ilmoitettiin", "että", "kansa", "oli", "paennut", "muuttui", "faraon", "ja", "hänen", "palvelijainsa", "mieli", "kansaa", "kohtaan", "ja", "he", "sanoivat:", "Mitä", "teimmekään", "kun", "päästimme", "Israelin", "meitä", "palvelemasta!",
+            "hän", "valjastutti", "hevoset", "sotavaunujensa", "eteen", "ja", "otti", "väkensä", "mukaansa",
+            "hän", "otti", "kuudetsadat", "valitut", "sotavaunut", "sekä", "kaikki", "muut", "Egyptin", "sotavaunut", "ynnä", "vaunusoturit", "niihin", "kaikkiin",
+            "Herra", "paadutti", "faraon", "Egyptin", "kuninkaan", "sydämen", "niin", "että", "hän", "lähti", "ajamaan", "takaa", "israelilaisia", "vaikka", "israelilaiset", "olivat", "lähteneet", "matkaan", "voimallisen", "käden", "suojassa",
+            "egyptiläiset", "kaikki", "faraon", "hevoset", "sotavaunut", "ja", "ratsumiehet", "ja", "koko", "hänen", "sotajoukkonsa", "ajoivat", "heitä", "takaa", "ja", "saavuttivat", "heidät", "leiriytyneinä", "meren", "rannalle", "Pii-Hahirotin", "kohdalle", "vastapäätä", "Baal-Sefonia",
+            "kun", "farao", "oli", "lähellä", "nostivat", "israelilaiset", "silmänsä", "ja", "näkivät", "että", "egyptiläiset", "olivat", "tulossa", "heidän", "jäljessänsä", "Silloin", "israelilaiset", "peljästyivät", "kovin", "ja", "huusivat", "Herraa",
+            "he", "sanoivat", "Moosekselle:", "Eikö", "Egyptissä", "ollut", "hautoja", "kun", "toit", "meidät", "tänne", "erämaahan", "kuolemaan?", "Mitä", "teit", "meille", "kun", "johdatit", "meidät", "pois", "Egyptistä!",
+            "sanoneet", "tätä", "sinulle", "Egyptissä?", "Sanoimmehan:", "Anna", "meidän", "olla", "rauhassa", "että", "palvelisimme", "egyptiläisiä", "Sillä", "parempi", "olisi", "ollut", "palvella", "egyptiläisiä", "kuin", "kuolla", "erämaahan",
+            "vastasi", "kansalle:", "Älkää", "peljätkö", "pysykää", "paikoillanne", "niin", "te", "näette", "minkä", "pelastuksen", "Herra", "tänä", "päivänä", "antaa", "teille", "sillä", "sellaista", "minkä", "näette", "egyptiläisille", "tapahtuvan", "tänä", "päivänä", "ette", "koskaan", "enää", "tule", "näkemään",
+            "sotii", "teidän", "puolestanne", "ja", "te", "olkaa", "hiljaa"
+        ];
 
         var errors = 0; 
         var audio = new Audio('./audio/punch.mp3');
@@ -87,11 +102,25 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
             }
         };
         
+        $scope.useWords = function () {
+            var generatedEx = "";
+            for (var i = 0; i < $scope.wordCount.count; i++) {
+                generatedEx += words[Math.random() * words.length];
+                generatedEx += i < $scope.wordCount.count - 1 ? " " : "";
+            }
+            $scope.currentExercise = generatedEx;
+            $scope.exerciseText = $scope.currentExercise;
+            $scope.reset();
+        };
+        
         /*
          * Autogenerate function to create texts to write
          */
         $scope.generateText = function () {
             var possibleChars = $scope.exercise.name;
+            if (possibleChars == $scope.exercises[$scope.exercises.length-1].name){
+                return $scope.useWords();
+            }
             var generatedEx = "";
 
             var minLengthOfWord = 3;

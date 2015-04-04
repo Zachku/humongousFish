@@ -7,13 +7,15 @@
     <div id ="helpLink">
       <a id="showHelpButton">Show help</a>
     </div>
-    
+
     <div id="helpImage" style="display:none;">
       <img src="images/help.png" alt="some_text"></img>
     </div>
+
     <div id="optionsForm">
       <div id ="helpLink">
         <a id="pasteTextLink">Toggle between choosing own text and using auto generated text</a>
+        
         <a id="generateTextLink" style="display:none;">Paste own text</a>
       </div>
       <!-- Paste own text -->
@@ -27,7 +29,7 @@
     
       <!-- Let machine generate the text -->
       <div id="generatedText">
-        <h3>Use generated text</h3>
+        <h3>Use automaticly generated text or random words.</h3>
         
         <label for="wordCount">Length of test (words)</label>
         <select 
@@ -36,6 +38,8 @@
           name="wordCount"
           class="form-control">
         </select>
+        <a ng-click="useWords()"><h3>Use random words</h3></a>
+        <h3>Or</h3>
         <label for="exercise">Choose the letter combination you want to train </label>
         <select 
           name="exercise"
