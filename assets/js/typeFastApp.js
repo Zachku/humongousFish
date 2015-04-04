@@ -43,7 +43,16 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
             "minä", "paadutan", "faraon", "sydämen", "niin", "että", "hän", "ajaa", "heitä", "takaa", "mutta", "minä", "näytän", "kunniani", "tuhoamalla", "faraon", "ja", "koko", "hänen", "sotajoukkonsa", "ja", "niin", "egyptiläiset", "tulevat", "tietämään", "että", "minä", "olen", "Herra", "Ja", "he", "tekivät", "niin",
             "Egyptin", "kuninkaalle", "ilmoitettiin", "että", "kansa", "oli", "paennut", "muuttui", "faraon", "ja", "hänen", "palvelijainsa", "mieli", "kansaa", "kohtaan", "ja", "he", "sanoivat:", "Mitä", "teimmekään", "kun", "päästimme", "Israelin", "meitä", "palvelemasta!",
             "hän", "valjastutti", "hevoset", "sotavaunujensa", "eteen", "ja", "otti", "väkensä", "mukaansa",
-        
+            "1", 
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0",
         ];
 
         var errors = 0; 
