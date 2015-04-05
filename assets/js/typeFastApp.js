@@ -38,7 +38,11 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
         $scope.currentExercise = "";
         
         var words = [
-            "israelilaisille", "että", "he", "kääntyvät", "takaisin", "ja", "leiriytyvät", "Pii-Hahirotin", "kohdalle", "Migdolin", "ja", "meren", "välille", "leiriytykää", "vastapäätä", "Baal-Sefonia", "meren", "rannalle",
+            "israelilaisille", 
+            "että",
+            "he", 
+            "kääntyvät", 
+            "takaisin", "ja", "leiriytyvät", "Pii-Hahirotin", "kohdalle", "Migdolin", "ja", "meren", "välille", "leiriytykää", "vastapäätä", "Baal-Sefonia", "meren", "rannalle",
             "farao", "on", "ajatteleva", "että", "israelilaiset", "ovat", "eksyneet", "maassa", "ja", "että", "erämaa", "on", "saartanut", "heidät",
             "minä", "paadutan", "faraon", "sydämen", "niin", "että", "hän", "ajaa", "heitä", "takaa", "mutta", "minä", "näytän", "kunniani", "tuhoamalla", "faraon", "ja", "koko", "hänen", "sotajoukkonsa", "ja", "niin", "egyptiläiset", "tulevat", "tietämään", "että", "minä", "olen", "Herra", "Ja", "he", "tekivät", "niin",
             "Egyptin", "kuninkaalle", "ilmoitettiin", "että", "kansa", "oli", "paennut", "muuttui", "faraon", "ja", "hänen", "palvelijainsa", "mieli", "kansaa", "kohtaan", "ja", "he", "sanoivat:", "Mitä", "teimmekään", "kun", "päästimme", "Israelin", "meitä", "palvelemasta!",
@@ -107,7 +111,7 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
         $scope.useWords = function () {
             var generatedEx = "";
             for (var i = 0; i < $scope.wordCount.count; i++) {
-                generatedEx += words[Math.floor(Math.random() * words.length - 1)];
+                generatedEx += words[Math.floor(Math.random() * words.length)];
                 generatedEx += i < $scope.wordCount.count - 1 ? " " : "";
             }
             $scope.currentExercise = generatedEx;
