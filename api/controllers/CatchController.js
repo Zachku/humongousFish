@@ -27,8 +27,11 @@ module.exports = {
 			console.log(req.param('id'));
 			Catch.find({
 				sort: 'date DESC',
-				where: { isPublic: true },
-				owner : req.param('id')}).populate('fish').populate('lure').exec(function(err, catches){
+				where: { 
+					isPublic: true, 
+					'owner' : req.param('id')}
+				})
+			.populate('fish').populate('lure').exec(function(err, catches){
 				return res.view('', {
 					catches: catches,
 					user: user
