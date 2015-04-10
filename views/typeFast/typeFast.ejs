@@ -51,16 +51,21 @@
       </div>
     </div>
     
+    <div id="resultDiv" ng-bind="resultDiv"  style="display:none">
+        
+    </div>
     <div class="form-group" id="type-speed-form">
       <label for="areaOfExercises"></label>
       <h2>Choose text to train and start test by typing the first character</h2>
-      <textarea name="areaOfExercises" id="areaOfExercises" rows="5" class="form-control" disabled ng-model="exerciseText"></textarea>
+
+      <div name="divOfExercises" id="divOfExercises" ng-bind="exerciseText">
+      </div>
+
       <input type="text" id="textInput" ng-model="textInput" ng-change="check()" class="form-control" ng-trim="false" ng-focus="isFocused" ng-disabled="isInputDisabled"></input>
     </div>
     <p> Start time : {{start}} <br>End time: {{end}} </p>
   </div>
  </div>
-
 
 <!-- Some JQuery code to show and hide help image -->
 <script>

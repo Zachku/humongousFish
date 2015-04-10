@@ -23,6 +23,7 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
         
         // possible lengths for test
         $scope.wordCounts = [
+            { count: 2 },
             { count: 20 },
             { count: 30 },
             { count: 40 },
@@ -33,7 +34,7 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
             { count: 90 },
             { count: 100 },
         ];
-        $scope.wordCount = $scope.wordCounts[1];
+        $scope.wordCount = $scope.wordCounts[0];
 
         $scope.currentExercise = "";
         
@@ -90,14 +91,10 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
                 $scope.currentExercise = exercise.substring(1, exercise.length);
                 $scope.exerciseText = $scope.currentExercise;
                 if (exercise.length <= 1) {
-                    endTime = new Date();
+                    showResults();
 
                     $scope.currentExercise = "";
-                    var timeItTook = (endTime.getTime() - startTime.getTime()) / 1000;
-                    var wmp = $scope.wordCount.count / (timeItTook / 60);
-                    
-                    passEndTime();
-                    alert("Finish! You had " + errors + " typos. It took: " + timeItTook + " seconds and your WPM is " + wmp);
+                    $scope.exerciseText = "";
                 }
             } else {
                 $scope.textInput = input.substring(0, input.length-1);
@@ -107,7 +104,26 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
                 audio.play();
             }
         };
-        
+
+        /*
+         * When the test is over we send the results to user
+         */
+        showResults = function() {
+
+            endTime = new Date();
+
+            var timeItTook = (endTime.getTime() - startTime.getTime()) / 1000;
+            var wmp = ($scope.wordCount.count / (timeItTook / 60)).toFixed(2);
+
+            //Check if user had 5 or more typos.
+            var greetings = errors < 5 ? "Well done!" : "Better luck next time!" ;
+
+            passEndTime();
+            $("#resultDiv").html(greetings + "<br>" + "You had " + errors + " typos and it took " + timeItTook + " seconds. <br>Your WPM is " + wmp);
+
+            $("#resultDiv").toggle();
+        };
+
         $scope.useWords = function () {
             var generatedEx = "";
             for (var i = 0; i < $scope.wordCount.count; i++) {
@@ -158,6 +174,7 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
          * Reset the application
          */
         $scope.reset = function () {
+            $("#resultDiv").hide();
             $scope.start = "0";
             $scope.end = "0";
             errors = 0;
@@ -165,6 +182,7 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
             started = false;
             $scope.isInputDisabled = false;
             $('#textInput').focus();
+
         }
         
         
@@ -173,14 +191,14 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
          */
         passStartTime = function () {
             var h = startTime.getHours();
-            var min = startTime.getMinutes() > 10 ? startTime.getMinutes() : "0" + startTime.getMinutes();
-            var sec = startTime.getSeconds() > 10 ? startTime.getSeconds() : "0"+ startTime.getSeconds();
+            var min = startTime.getMinutes() >= 10 ? startTime.getMinutes() : "0" + startTime.getMinutes();
+            var sec = startTime.getSeconds() >= 10 ? startTime.getSeconds() : "0"+ startTime.getSeconds();
             $scope.start = h + ":" + min + ":" + sec;
         }
         passEndTime = function () {
             var h = endTime.getHours();
-            var min = endTime.getMinutes() > 10 ? endTime.getMinutes() : "0" + endTime.getMinutes();
-            var sec = endTime.getSeconds() > 10 ? endTime.getSeconds() : "0" + endTime.getSeconds();
+            var min = endTime.getMinutes() >= 10 ? endTime.getMinutes() : "0" + endTime.getMinutes();
+            var sec = endTime.getSeconds() >= 10 ? endTime.getSeconds() : "0" + endTime.getSeconds();
             $scope.end = h + ":" + min + ":" + sec;
         }
 
