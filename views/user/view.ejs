@@ -2,7 +2,7 @@
 <div class = "myProfileForm">
 	<h1>My profile</h1>
 	<form id="form" class="form" action="/user/update" method="post">
-		
+		<input type='hidden' name='_csrf' value='<%= _csrf %>'>
 		<input type="hidden" name="id" value="<%= user.id %>">
 
 		<div class = "form-group">
@@ -28,7 +28,7 @@
 	<div class='avatarhImageForm'>	
 		<form action="/user/uploadAvatarImage" enctype="multipart/form-data" method="post">
 			<input type='hidden', name='id' value=<%= user.id %>>
-
+			<input type='hidden' name='_csrf' value='<%= _csrf %>'>
 			<div class="form_row">
 	    		<input type="file" name="avatar" multiple="multiple" accept="image/*">
 			</div>

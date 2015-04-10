@@ -10,6 +10,7 @@
 <% } %>
 
 <form id="form" class="form" action="/catch/processCreate" method="post">
+	<input type='hidden' name='_csrf' value='<%= _csrf %>'>
 	<div class = "form-group">
 		<label for="weight" >Weight</label>
 		<input class="form-control" id="weight" type="text" name="weight" placeholder="Weight">

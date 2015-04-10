@@ -1,6 +1,7 @@
 <h1> Users </h1>
 <div class="findUser"> 
     <input type="text" id="username" name="username" placeholder="Type username to search for users:" autocomplete="off" autofocus class="user_input">
+    <input type='hidden' id="csrf" name='_csrf' value='<%= _csrf %>'>
 </div>
 
 <div id = "foundUsers">
@@ -14,7 +15,7 @@
     $.ajax({
            type: "POST",
            url: url,
-           data: {username : $("#username").val()}, // serializes the form's elements.
+           data: {username : $("#username").val(), _csrf: $("#csrf").val()}, // serializes the form's elements.
            success: function(result)
            {
                $("#foundUsers").html(result);

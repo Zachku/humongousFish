@@ -17,12 +17,14 @@
 <td> 
 
 <form action="/lake/delete" method='post'>
+   <input type='hidden' name='_csrf' value='<%= _csrf %>'>
    <input type="submit" class="table_submit" value='delete'>
    <input type='hidden', name='id' value=<%= lakes[i].id %>>
 </form>
 </td> 
 <td> 
 <form action="/lake/view/<%= lakes[i].id %>" method='post'>
+  <input type='hidden' name='_csrf' value='<%= _csrf %>'>
   <input type="submit" class="table_submit" value='Edit'>
 </form>
 </td>
@@ -32,6 +34,7 @@
 
 <form id="form" class="form" action="/lake/processCreate" method="post">
   <h2>Add lake</h2>
+  <input type='hidden' name='_csrf' value='<%= _csrf %>'>
   <div class = "form-group">
     <label for="lake" >Lake name</label>
     <input class="form-control" id="lake" type="text" name="name" placeholder="Lake name">

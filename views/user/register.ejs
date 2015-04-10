@@ -1,6 +1,7 @@
 <h1>Registeration Form</h1>
 
 <form id="form" class="form" action="/user/create" method="post">
+	<input type='hidden' name='_csrf' value='<%= _csrf %>'>
 	<div class = "form_row">
 		<label class = "form_label" >Username</label>
 		<input class="form_input" type="text" name="username" placeholder="Username">

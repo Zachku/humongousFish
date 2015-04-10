@@ -12,6 +12,7 @@
 		<input type="checkbox" checked="true" id="followMessagesCheckbox"> Follow messages
 		<!-- action="/chatMessage/sendMessage" -->
 		<form id="form" action="/" method="post">
+			<input type='hidden' name='_csrf' value='<%= _csrf %>'>
 			<input type="text" name='message' id='chatMessageInput' autocomplete="off" autofocus <% if(!req.session.User) {%> placeholder="You have to log in to send chat messages." disabled<% } %>>
 			<input class="chat_submit" type='submit' value="Send" <% if(!req.session.User) {%> disabled<% } %>>
 

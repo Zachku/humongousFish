@@ -23,6 +23,7 @@
     </div>
 
     <form action="/catch/likeCatch" id="form" method="post">
+      <input type='hidden' name='_csrf' value='<%= _csrf %>'>
       <input type="hidden" name="catchId" id="catchId " value="<%=catch1.id%>">
       <input type="submit" 
       <%if( !userAllreadyLikedThisCatch ) { %>

@@ -1,6 +1,7 @@
 <div id="userInfo">
 	<h1> <%= lure.id %> </h1>
 	<form action="/lure/update/<%=lure.id%>" method = 'POST'>
+		<input type='hidden' name='_csrf' value='<%= _csrf %>'>
 		Brand <br>
 		<input type="text" name="brand" value="<%= lure.brand %>"><br>
 		Model <br>

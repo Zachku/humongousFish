@@ -9,6 +9,7 @@
 	</div>
 <% } %>
 <form id="form" class="form" action="/user/login" method="post">
+	<input type='hidden' name='_csrf' value='<%= _csrf %>'>
 	<div class = "form-group">
 		<label for="username" >Username</label>
 		<input class="form-control" id="username" type="text" name="username" placeholder="Username">
