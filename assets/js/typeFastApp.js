@@ -20,7 +20,7 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
             { name : "qwertyuipåasdfghjklöääzxcvbnm1234567890" },
             { name : "Random words"}
         ];
-        
+
         // possible lengths for test
         $scope.wordCounts = [
             { count: 2 },
@@ -64,6 +64,8 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
         var audio = new Audio('./audio/punch.mp3');
         var started = false;
         
+        var resultColorPassed = {"background": "green"};
+        var resultColorFailed = {"background": "red"};
 
         var startTime;
         var endTime;
@@ -92,7 +94,7 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
                 $scope.exerciseText = $scope.currentExercise;
                 if (exercise.length <= 1) {
                     showResults();
-
+                    $scope.isInputDisabled = true;
                     $scope.currentExercise = "";
                     $scope.exerciseText = "";
                 }
@@ -113,8 +115,14 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
             var timeItTook = (endTime.getTime() - startTime.getTime()) / 1000;
             var wmp = ($scope.wordCount.count / (timeItTook / 60)).toFixed(2);
 
-            //Check if user had 5 or more typos.
-            var greetings = errors < 5 ? "Well done!" : "Better luck next time!" ;
+            //Check if user had 5 or more typos
+            if(errors > 5){
+                greetings = "Better luck next time!";
+                $scope.resultColor = resultColorFailed;
+            } else {
+                greetings = "Well done!";
+                $scope.resultColor = resultColorPassed;
+            }
 
             passEndTime();
             $("#resultDiv").html(greetings + "<br>" + "You had " + errors + " typos and it took " + timeItTook + " seconds. <br>Your WPM is " + wmp);
