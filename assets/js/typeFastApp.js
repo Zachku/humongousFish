@@ -99,9 +99,7 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
             } else {
                 $scope.textInput = input.substring(0, input.length-1);
                 errors++;
-                audio.pause();
-                audio = new Audio('./audio/punch.mp3');
-                audio.play();
+                $("#punchAudio").play();
             }
         };
 
