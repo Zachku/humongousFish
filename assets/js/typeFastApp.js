@@ -38,7 +38,7 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
 
         $scope.currentExercise = "";
         
-        var words = [
+        var finnishWords = [
             "israelilaisille", 
             "että",
             "he", 
@@ -58,6 +58,39 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
             "8",
             "9",
             "0",
+        ];
+
+        var englishWords = [
+            "And", "God", "made", "two", "great", "lights;", "the", "greater", "light", "to", "rule", "the", "day,",
+            "and", "the", "lesser", "light", "to", "rule", "the", "night:", "he", "made", "the", "stars", "also.",
+
+            "And", "God", "set", "them", "in", "the", "firmament", "of", "the", "heaven", "to", "give", "light",
+            "upon", "the", "earth,", "1:18", "And", "to", "rule", "over", "the", "day", "and", "over", "the", "night,", "and",
+            "to", "divide", "the", "light", "from", "the", "darkness:", "and", "God", "saw", "that", "it", "was", "good.",
+
+            "And", "the", "evening", "and", "the", "morning", "were", "the", "fourth", "day.",
+
+            "And", "God", "said,", "Let", "the", "waters", "bring", "forth", "abundantly", "the", "moving",
+            "creature", "that", "hath", "life,", "and", "fowl", "that", "may", "fly", "above", "the", "earth", "in", "the",
+            "open", "firmament", "of", "heaven.",
+
+            "And", "God", "created", "great", "whales,", "and", "every", "living", "creature", "that",
+            "moveth,", "which", "the", "waters", "brought", "forth", "abundantly,", "after", "their", "kind,",
+            "and", "every", "winged", "fowl", "after", "his", "kind:", "and", "God", "saw", "that", "it", "was", "good.",
+
+            "And", "God", "blessed", "them,", "saying,", "Be", "fruitful,", "and", "multiply,", "and", "fill",
+            "the", "waters", "in", "the", "seas,", "and", "let", "fowl", "multiply", "in", "the", "earth",
+
+            "And", "the", "evening", "and", "the", "morning", "were", "the", "fifth", "day.",
+
+            "And", "God", "said,", "Let", "the", "earth", "bring", "forth", "the", "living", "creature", "after",
+            "his", "kind,", "cattle,", "and", "creeping", "thing,", "and", "beast", "of", "the", "earth", "after", "his",
+            "kind:", "and", "it", "was", "so.",
+
+            "And", "God", "made", "the", "beast", "of", "the", "earth", "after", "his", "kind,", "and", "cattle",
+            "after", "their", "kind,", "and", "every", "thing", "that", "creepeth", "upon", "the", "earth", "after",
+            "his", "kind:", "and", "God", "saw", "that", "it", "was", "good.",
+            "1", "2", "2", "3", "4", "5", "6", "7", "8", "9", "10"
         ];
 
         var errors = 0; 
@@ -130,17 +163,28 @@ typeFastApp.controller('typeFastController', ['$scope', function ($scope) {
             $("#resultDiv").toggle();
         };
 
-        $scope.useWords = function () {
+        $scope.useFinnishWords = function () {
             var generatedEx = "";
             for (var i = 0; i < $scope.wordCount.count; i++) {
-                generatedEx += words[Math.floor(Math.random() * words.length)];
+                generatedEx += finnishWords[Math.floor(Math.random() * finnishWords.length)];
                 generatedEx += i < $scope.wordCount.count - 1 ? " " : "";
             }
             $scope.currentExercise = generatedEx;
             $scope.exerciseText = $scope.currentExercise;
             $scope.reset();
         };
-        
+
+        $scope.useEnglishWords = function() {
+            var generatedEx = "";
+            for (var i = 0; i < $scope.wordCount.count; i++) {
+                generatedEx += englishWords[Math.floor(Math.random() * englishWords.length)];
+                generatedEx += i < $scope.wordCount.count - 1 ? " " : "";
+            }
+            $scope.currentExercise = generatedEx;
+            $scope.exerciseText = $scope.currentExercise;
+            $scope.reset();
+        };
+
         /*
          * Autogenerate function to create texts to write
          */
